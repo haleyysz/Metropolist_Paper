@@ -1,4 +1,4 @@
-PWD /Users/haleyysz/Desktop/metropolist_paper
+PWD /Users/haleyysz/Documents/GitHub/Metropolist_Paper
 INPUT /usr/local/texlive/2018/texmf.cnf
 INPUT /usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -159,11 +159,22 @@ INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT section01/section.tex
 INPUT section01/section.tex
 INPUT section01/section.tex
-INPUT section01/assets/screenshot_map0.png
-INPUT ./section01/assets/screenshot_map0.png
-INPUT ./section01/assets/screenshot_map0.png
+INPUT section01/assets/screenshot_NoManSky.jpeg
+INPUT ./section01/assets/screenshot_NoManSky.jpeg
+INPUT ./section01/assets/screenshot_NoManSky.jpeg
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT section01/assets/screenshot_Minecraft.jpg
+INPUT ./section01/assets/screenshot_Minecraft.jpg
+INPUT ./section01/assets/screenshot_Minecraft.jpg
+INPUT section01/assets/screenshot_MFCG.png
+INPUT ./section01/assets/screenshot_MFCG.png
+INPUT ./section01/assets/screenshot_MFCG.png
+INPUT section01/assets/screenshot_FMG.png
+INPUT ./section01/assets/screenshot_FMG.png
+INPUT ./section01/assets/screenshot_FMG.png
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 INPUT section02/section.tex
 INPUT section02/section.tex
 INPUT section02/section.tex
@@ -183,3 +194,4 @@ INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.p
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
