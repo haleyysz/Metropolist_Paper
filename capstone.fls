@@ -159,9 +159,9 @@ INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT section01/section.tex
 INPUT section01/section.tex
 INPUT section01/section.tex
-INPUT section01/assets/screenshot_NoManSky.jpeg
-INPUT ./section01/assets/screenshot_NoManSky.jpeg
-INPUT ./section01/assets/screenshot_NoManSky.jpeg
+INPUT section01/assets/screenshot_NoManSky.jpg
+INPUT ./section01/assets/screenshot_NoManSky.jpg
+INPUT ./section01/assets/screenshot_NoManSky.jpg
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT section01/assets/screenshot_Minecraft.jpg
@@ -178,9 +178,6 @@ INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 INPUT section02/section.tex
 INPUT section02/section.tex
 INPUT section02/section.tex
-INPUT section02/assets/sample_image.png
-INPUT ./section02/assets/sample_image.png
-INPUT ./section02/assets/sample_image.png
 INPUT section03/section.tex
 INPUT section03/section.tex
 INPUT section03/section.tex
