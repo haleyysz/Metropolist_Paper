@@ -1,26 +1,101 @@
 \section{Requirements}
 \label{sec:Requirements}
 
-The functional requirements focus on developing a web application. There are two roles for this system: admins and users. As a result, the following requirements were established for the project:
+\subsection{Functional Requirements}
+Initially, almost all the requirements were given by Dr. Kenny Hunt, in an introductory meeting. There were daily meetings after that, in which Dr. Kenny Hunt would add additional requirements each time. He would also tune up any previous requirements that were given. The functional requirements focus on developing a web application. There are two roles for this system: admin and user. As a result, the following functional requirements were established for the project:
 \begin{itemize}
-  \item Admin Role
+  \item Both admin and user can:
   \begin{itemize}
-    \item The admin can log in
-    \item The admin can log out
-    \item The admin can edit personal profile
-    \item The admin can search for a user using any combination of email, username, first name, and last name.
-    \item The admin can enable or disable a user
+    \item Log In: with unique email and password
+    \item Log Out: end the session
+    \item Edit Personal Profile: delete the account or change email, first name, last name, and password
   \end{itemize}
-  \item User Role
+  \item Admin is able to:
   \begin{itemize}
-    \item The user can sign up
-    \item The user can log in
-    \item The user can log out
-    \item The user can edit personal profile
-    \item The user can create/edit/delete maps
-    \item The user can make maps public, private, or viewable by only a select list of users
-    \item The user can view all his maps
-    \item The user can view all visible maps
-    \item The user can download maps of either his own or others
+    \item View All Users: on the ``dashboard'' page
+    \item Enable or Disable Users: allow the user to log in or not
+    \item Search for Users: use any combination of email, first name, and last name; on the ``dashboard'' page
+  \end{itemize}
+  \item User is able to:
+  \begin{itemize}
+    \item Sign Up: with unique email, first name, last name, long password, and confirmed password
+    \item View All Own Maps: on the ``dashboard'' page
+    \item View All Visible Maps: on the ``community'' page
+    \item Search for Maps: use any combination of the map name, created date, edited date, the owner's email, the owner's first name, and the owner's last name; on the ``community'' page
+    \item Download Maps: of either own or other visible; in ``png'' or ``svg'' format
+    \item Make Maps Public or Private: allow the map displaying on the ``community'' page or not
+    \item Create Maps: with a name; on the ``dashboard'' page
+    \item Delete Maps: on the ``dashboard'' page
+    \item Edit Maps:
+    \begin{itemize}
+      \item When the user opens the map editor page, it shows an empty map with random map seeds by default, and then the user can make maps by accessing the menu on the right
+    	\item In the menu, the user can input the number of map seeds to create a new empty map, or remain unchanged
+    	\item The user can select different types of layers for the map: elevation, affluence, desirability, district, and building, which can superimpose on each other
+      \item The user can choose to display street names or not
+      \item The user can manipulate the ``increase/decrease toggle,'' ``increment sliding'' and ``waterline sliding'' to edit the map: increasing or decreasing the value of elevation and affluence; building or removing the wall; making map cell as water or city
+      \item If the waterline is changed, the continent will be changed accordingly
+      \item The user can choose to display contour lines or not
+      \item After selecting one or more than one layers under ``edit'' mode, the user can change the size of the "soft brush" by using the mouse wheel, which determines the area where the map will be edited
+      \item The user edits the map by clicking and dragging the ``soft brush.''
+      \item The districts and buildings are procedurally generated
+      \item The user is allowed to change the type of the current district by right-clicking and selecting a new type form the context menu
+      \item The map provides 13 different types of districts: rich, medium, poor, empty, plaza, park, farm, water, harbor, university, religious, castle and military
+      \item The user can zoom in and zoom out the map by pressing on the alt key and using the mouse wheel
+      \item The user can use a specialized button to resize the map on the right top
+      \item The user can save the map or download it by clicking the button on the right bottom
+    \end{itemize}}
   \end{itemize}
 \end{itemize}
+
+Figure \ref{Use Case Diagram} is the use case diagram that describes the functionalities to be implemented by this web application.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{section02/assets/use_case.png}
+\caption[Use Case Diagram]{\label{Use Case Diagram}Use Case Diagram}
+\end{figure}
+
+\subsection{Non-Functional Requirements}
+There are too many non-functional requirements of a system: response time, availability, usability, security (authentication, authorization, integrity, privacy, etc.) and so on. Preventing writing a wish list, we decided to focus on the following requirements:
+\begin{itemize}
+  \item Security:
+
+  \begin{itemize}
+    \item Input Validation:
+    \begin{itemize}
+      \item Add validations at both client and server sides
+      \item All methods should always validate all parameters in the server-side
+    \end{itemize}
+    \item Password Encryption:
+    \begin{itemize}
+      \item Shall always be encrypted
+      \item Not even the system administrators shall see clear text passwords
+      \item Applying a hashing algorithm to passwords
+    \end{itemize}
+    \item Prohibiting Cross Site Scripting (XSS):
+    \begin{itemize}
+      \item Never insert data anywhere in a <script> element
+      \item Never insert data in an HTML comment
+      \item Never insert data in an attribute name
+      \item Never insert data in an attribute value
+      \item Never insert data in a tag name
+      \item Never insert data anywhere in CSS
+    \end{itemize}
+    \item Secure Session Cookie:
+    \begin{itemize}
+      \item Setting the ``Secure'' cookie attribute and instruct web browsers to send the cookie only over encrypted, e.g., HTTPS, links.
+      \item Setting the ``HttpOnly'' attribute true and prohibiting the JavaScript code from reading the cookie via the DOM ``document.cookie'' JavaScript object.
+      \item Always change the session id after login
+    \end{itemize}
+  \end{itemize}
+
+  \item Performance:
+  \begin{itemize}
+    \item High performance of rendering map:
+    \begin{itemize}
+      \item Comparing and selecting the fastest way to render maps, e.g., canvas, SVG
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsection{Selection of Life Cycle Model}

@@ -178,6 +178,9 @@ INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 INPUT section02/section.tex
 INPUT section02/section.tex
 INPUT section02/section.tex
+INPUT section02/assets/use_case.png
+INPUT ./section02/assets/use_case.png
+INPUT ./section02/assets/use_case.png
 INPUT section03/section.tex
 INPUT section03/section.tex
 INPUT section03/section.tex
