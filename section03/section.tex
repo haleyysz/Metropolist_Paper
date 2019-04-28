@@ -1,18 +1,51 @@
-\section{Design and Implementation}
-\label{sec:DesignImplementation}
+\section{Design}
+\label{sec:Design}
 
-\subsection{Overview} 
-This gives a brief overview of this section.
-
-\subsection{Point 1}
-This subsection gives a great deal of precise description supporting point 1.  For example,
-Figure \ref{State Chart 3} explains in great detail a state chart.
+\subsection{Architecture Design}
+Because we selected the web application model from the beginning, we quickly decided to adopt the classic client-server architecture, which is a distributed application structure that partitions tasks or workloads between the providers of a resource or service, called servers, and service requesters, called clients. In theory, any device connected to the Internet can try to access and obtain the resources or services of the server while the server is running normally. Figure \ref{Client-Server Architecture} shows how it works.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=.5\textwidth]{section03/assets/sample_image.png}
-\caption[Short Caption 3]{\label{State Chart 3}State Chart Diagram}
+\includegraphics[width=\textwidth]{section03/assets/client_server.png}
+\caption[the Architecture of Client-Server Model]{\label{Client-Server Architecture}the Architecture of Client-Server Model}
 \end{figure}
 
-\subsection{Point 2}
-This gives Point 2
+Based on the client-server structure, we have detailed its component structures below:
+\subsubsection{Web Browser or Client}
+The web browser or client is the interface rendition of a web app functionality, with which the user interacts with. This content delivered to the client can be developed using HTML, JavaScript, and CSS and doesn’t require operating system related adaptations. In essence, the web browser or client manages how end users interact with the application.
+There are three, well-known Web Application Architecture types available in the modern tech landscape: Single Page Applications (SPA), Microservices, and Serverless Architectures. Combine the actual situation and needs of this project, we chose the SPA.
+
+\subsubsection{Web Application Server}
+The web application server manages business logic and data persistence and can be built using PHP, Python, Java, Ruby, .NET, Node.js, among other languages. It’s comprised of at least a centralized hub or control center to support multi-layer applications.
+
+\subsubsection{Database Server}
+The database server provides and stores relevant data for the application. Additionally, it may also supply the business logic and other information that is managed by the web application server.
+
+\subsection{Database Design}
+This subsection gives a great deal of precise description supporting point 1.
+
+\subsection{REST API Design}
+\begin{table}[]
+\begin{tabular}{lll}
+\hline
+HTTP Verb & URI & Description \\ \hline
+POST & /metro/auth/signup & Sign up for a new account \\
+POST & /metro/auth/login & Log in to the system \\
+POST & /metro/auth/logout & Log out of the system \\ \hline
+GET & /metro/api/v1/users & Get a list of all users \\
+GET & /metro/api/v1/users/\{id\} & Get the user with ID equal to \{id\} \\
+GET & /metro/api/v1/users/\{uid\}/maps/ & Get a list of all maps of the user with ID equal to \{uid\} \\
+PATCH & /metro/api/v1/users/\{id\}/password & Verify the password of the user with ID equal to \{id\} \\
+PUT & /metro/api/v1/users/\{id\}/password & Update the password of the user with ID equal to \{id\} \\
+PUT & /metro/api/v1/users/\{id\}/email & Update the email of the user with ID equal to \{id\} \\
+PUT & /metro/api/v1/users/\{id\}/name & Update the name of the user with ID equal to \{id\} \\
+PUT & /metro/api/v1/users/\{id\}/enabled & Update the enabled of the user with ID equal to \{id\} \\ \hline
+GET & /metro/api/v1/maps/\{id\} & Get the map with ID equal to \{id\} \\
+GET & /metro/api/v1/maps/?page=\{page\}\&limit=\{limit\} & Get a list of \{limit\} maps on page \{page\} \\
+POST & /metro/api/v1/maps & Add a new map to the database \\
+PUT & /metro/api/v1/maps/\{id\} & Update the map with ID equal to \{id\} \\
+DELETE & /metro/api/v1/maps/\{id\} & Delete the map with ID equal to \{id\}
+\end{tabular}
+\end{table}
+
+\subsection{Map Generator Design}

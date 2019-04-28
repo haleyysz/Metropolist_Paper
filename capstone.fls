@@ -187,9 +187,9 @@ INPUT ./section02/assets/agile.png
 INPUT section03/section.tex
 INPUT section03/section.tex
 INPUT section03/section.tex
-INPUT section03/assets/sample_image.png
-INPUT ./section03/assets/sample_image.png
-INPUT ./section03/assets/sample_image.png
+INPUT section03/assets/client_server.png
+INPUT ./section03/assets/client_server.png
+INPUT ./section03/assets/client_server.png
 INPUT capstone.aux
 INPUT ./capstone.out
 INPUT ./capstone.out
