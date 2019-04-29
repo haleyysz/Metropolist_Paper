@@ -13,6 +13,7 @@ Because we selected the web application model from the beginning, we quickly dec
 Based on the client-server structure, we have detailed its component structures below:
 \subsubsection{Web Browser or Client}
 The web browser or client is the interface rendition of a web app functionality, with which the user interacts with. This content delivered to the client can be developed using HTML, JavaScript, and CSS and doesn’t require operating system related adaptations. In essence, the web browser or client manages how end users interact with the application.
+
 There are three, well-known Web Application Architecture types available in the modern tech landscape: Single Page Applications (SPA), Microservices, and Serverless Architectures. Combine the actual situation and needs of this project, we chose the SPA.
 
 \subsubsection{Web Application Server}
@@ -25,27 +26,47 @@ The database server provides and stores relevant data for the application. Addit
 This subsection gives a great deal of precise description supporting point 1.
 
 \subsection{REST API Design}
-\begin{table}[]
-\begin{tabular}{lll}
-\hline
-HTTP Verb & URI & Description \\ \hline
-POST & /metro/auth/signup & Sign up for a new account \\
-POST & /metro/auth/login & Log in to the system \\
-POST & /metro/auth/logout & Log out of the system \\ \hline
-GET & /metro/api/v1/users & Get a list of all users \\
-GET & /metro/api/v1/users/\{id\} & Get the user with ID equal to \{id\} \\
-GET & /metro/api/v1/users/\{uid\}/maps/ & Get a list of all maps of the user with ID equal to \{uid\} \\
-PATCH & /metro/api/v1/users/\{id\}/password & Verify the password of the user with ID equal to \{id\} \\
-PUT & /metro/api/v1/users/\{id\}/password & Update the password of the user with ID equal to \{id\} \\
-PUT & /metro/api/v1/users/\{id\}/email & Update the email of the user with ID equal to \{id\} \\
-PUT & /metro/api/v1/users/\{id\}/name & Update the name of the user with ID equal to \{id\} \\
-PUT & /metro/api/v1/users/\{id\}/enabled & Update the enabled of the user with ID equal to \{id\} \\ \hline
-GET & /metro/api/v1/maps/\{id\} & Get the map with ID equal to \{id\} \\
-GET & /metro/api/v1/maps/?page=\{page\}\&limit=\{limit\} & Get a list of \{limit\} maps on page \{page\} \\
-POST & /metro/api/v1/maps & Add a new map to the database \\
-PUT & /metro/api/v1/maps/\{id\} & Update the map with ID equal to \{id\} \\
-DELETE & /metro/api/v1/maps/\{id\} & Delete the map with ID equal to \{id\}
-\end{tabular}
+\begin{table}[ht]
+  \centering
+  \begin{tabularx}{\textwidth}{>{\raggedright}cXX} % way of defining a fix columns width
+    \toprule[1.5pt]
+    \textit{HTTP Verb} & \textit{URI} & \textit{Description} \\
+    \midrule[1.5pt]
+    POST & /metro/auth/signup & Sign up for a new account \\
+    \midrule
+    POST & /metro/auth/login & Log in to the system \\
+    \midrule
+    POST & /metro/auth/logout & Log out of the system \\
+    \midrule
+    GET & /metro/api/v1/users & Get a list of all users \\
+    \midrule
+    GET & /metro/api/v1/users/\{id\} & Get the user with \{id\} \\
+    \midrule
+    GET & /metro/api/v1/users/\{uid\}/ maps & Get a list of all maps of the user with \{uid\} \\
+    \midrule
+    PATCH & /metro/api/v1/users/\{id\}/ password & Verify the password of the user with \{id\} \\
+    \midrule
+    PUT & /metro/api/v1/users/\{id\}/ password & Update the password of the user with \{id\} \\
+    \midrule
+    PUT & /metro/api/v1/users/\{id\}/ email & Update the email of the user with \{id\} \\
+    \midrule
+    PUT & /metro/api/v1/users/\{id\}/ name & Update the name of the user with \{id\} \\
+    \midrule
+    PUT & /metro/api/v1/users/\{id\}/ enabled & Update the enabled of the user with \{id\} \\
+    \midrule
+    GET & /metro/api/v1/maps/\{id\} & Get the map with \{id\} \\
+    \midrule
+    GET & /metro/api/v1/maps/ ?page=\{page\}\&limit=\{limit\} & Get a list of \{limit\} maps on page \{page\} \\
+    \midrule
+    POST & /metro/api/v1/maps & Add a new map to the database \\
+    \midrule
+    PUT & /metro/api/v1/maps/\{id\} & Update the map with \{id\} \\
+    \midrule
+    DELETE & /metro/api/v1/maps/\{id\} & Delete the map with \{id\} \\
+    \bottomrule[1.5pt]
+  \end{tabularx}
+  \caption[REST API Design Table]{REST API Design Table}
+  \label{REST API Design Table}
 \end{table}
 
 \subsection{Map Generator Design}
