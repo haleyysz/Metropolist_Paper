@@ -177,8 +177,9 @@ INPUT ./section01/assets/screenshot_MFCG.png
 INPUT section01/assets/screenshot_FMG.png
 INPUT ./section01/assets/screenshot_FMG.png
 INPUT ./section01/assets/screenshot_FMG.png
-INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
-INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
+INPUT section01/assets/screenshot_Metropolist.png
+INPUT ./section01/assets/screenshot_Metropolist.png
+INPUT ./section01/assets/screenshot_Metropolist.png
 INPUT section02/section.tex
 INPUT section02/section.tex
 INPUT section02/section.tex
@@ -194,6 +195,8 @@ INPUT section03/section.tex
 INPUT section03/assets/client_server.png
 INPUT ./section03/assets/client_server.png
 INPUT ./section03/assets/client_server.png
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 INPUT capstone.aux
 INPUT ./capstone.out
 INPUT ./capstone.out
