@@ -215,6 +215,15 @@ INPUT ./section04/assets/GUI-user.png
 INPUT section04/assets/GUI-profile.png
 INPUT ./section04/assets/GUI-profile.png
 INPUT ./section04/assets/GUI-profile.png
+INPUT section04/assets/Map-voronoi.png
+INPUT ./section04/assets/Map-voronoi.png
+INPUT ./section04/assets/Map-voronoi.png
+INPUT section04/assets/Map-voronoi-relaxation.png
+INPUT ./section04/assets/Map-voronoi-relaxation.png
+INPUT ./section04/assets/Map-voronoi-relaxation.png
+INPUT section04/assets/Map-heightmap.png
+INPUT ./section04/assets/Map-heightmap.png
+INPUT ./section04/assets/Map-heightmap.png
 INPUT capstone.bbl
 INPUT capstone.bbl
 INPUT capstone.aux

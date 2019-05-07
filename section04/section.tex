@@ -2,15 +2,13 @@
 \label{sec:Implementation}
 
 \subsection{Frontend}
-% SPA -> Frameworks -> Angular -> Google Material Design -> APIs -> Pics
-
-There are many mature SPA frameworks today, such as Vue.js, ReactJS, Angular.js, Angular2, and so on. Since the author is familiar with Angular2, the frontend part of the project is implemented using Angular2, which comes with almost everything we need, from powerful templates to fast rendering, data management, HTTP services, form handling, and so much more. Moreover, Angular2 provides a UI component library called Angular Material,
+There are many mature SPA frameworks today, such as Vue.js, ReactJS, Angular.js, Angular, and so on. Since the author is familiar with Angular, the frontend part of the project is implemented using Angular, which comes with almost everything we need, from powerful templates to fast rendering, data management, HTTP services, form handling, and so much more. Moreover, Angular provides a UI component library called Angular Material,
 which is inspired by Google Material Design. Angular Material components help in constructing attractive, consistent, and functional web pages and web applications while adhering to modern web design principles like browser portability, device independence, and graceful degradation. It helps in creating faster, beautiful, and responsive websites.
 
-In our design, the user must register to log in before he can use the application, so the home page is the login page. Luckily, Angular2 provides multiple routing guards, and the CanActivate interface is a good way for us to implement our own authentication routing. In addition, as we mentioned in Section \ref{sec:Requirements>Non-Functional Requirements} Non-Functional Requirements, every form must be validated by the client side before being submitted to the server side. The Implementation of GUI is listed below:
+In our design, the user must register to log in before he can use the application, so the home page is the login page. Luckily, Angular provides multiple routing guards, and the CanActivate interface is a good way for us to implement our own authentication routing. In addition, as we mentioned in Section \ref{sec:Requirements>Non-Functional Requirements} Non-Functional Requirements, every form must be validated by the client side before being submitted to the server side. The Implementation of GUI is listed below:
 
 \begin{enumerate}
-  \item The ``Sign Up'' form requires the user to enter a unique and valid email, first name, last name, password, and confirmed password. The user can click the icon on the right of the password input to make his password visible or invisible. Also, the ``clear'' button on the left bottom corner is used to clear all inputs of the Sign-Up form. The user can also click the ``Log in instead'' button to be redirected to the ``Log In'' page if he already has an account. Figure \ref{fig:GUI signup} is the interface of the ``Sign Up'' page
+  \item The ``Sign Up'' form requires the user to enter a unique and valid email, first name, last name, password, and confirmed password. The user can click the icon on the right of the password input to make his password visible or invisible. Also, the ``clear'' button on the left bottom corner is used to clear all inputs of the Sign-Up form. The user can also click the ``Log in instead'' button to be redirected to the ``Log In'' page if he already has an account. Figure \ref{fig:GUI signup} is the interface of the ``Sign Up'' page.
 
   \begin{figure}[htbp]
   \centering
@@ -18,7 +16,7 @@ In our design, the user must register to log in before he can use the applicatio
   \caption[GUI: Sign Up]{\label{fig:GUI signup}GUI: Sign Up}
   \end{figure}
 
-  \item The ``Log In'' form requires the user to enter the email and the password. Also, the user can access to the Sign-Up page via the ``Create account'' button on the bottom. Figure \ref{fig:GUI login} is the interface of the ``Log In'' page
+  \item The ``Log In'' form requires the user to enter the email and the password. Also, the user can access to the Sign-Up page via the ``Create account'' button on the bottom. Figure \ref{fig:GUI login} is the interface of the ``Log In'' page.
 
   \begin{figure}[htbp]
   \centering
@@ -26,7 +24,7 @@ In our design, the user must register to log in before he can use the applicatio
   \caption[GUI: Log In]{\label{fig:GUI login}GUI: Log In}
   \end{figure}
 
-  \item The ``Community'' page shows all the maps that can be viewed, which are marked by their own owners as ``isVisible.'' Besides, the user can filter maps using map name, owner's email, owner's first name, or owner's last name via the ``Filter'' input on the left top corner. Figure \ref{fig:GUI community} is the interface of the ``Community'' page
+  \item The ``Community'' page shows all the maps that can be viewed, which are marked by their own owners as ``isVisible.'' Besides, the user can filter maps using map name, owner's email, owner's first name, or owner's last name via the ``Filter'' on the left top corner. Figure \ref{fig:GUI community} is the interface of the ``Community'' page.
 
   \begin{figure}[htbp]
   \centering
@@ -34,7 +32,7 @@ In our design, the user must register to log in before he can use the applicatio
   \caption[GUI: Community]{\label{fig:GUI community}GUI: Community}
   \end{figure}
 
-  \item The ``User Dashboard'' page displays all the maps belong to the current user. The user can filter them using any information of maps via the ``Filter'' input on the left top corner. The user can click on the header to perform the sorting of the corresponding map properties. Also, the user is allowed to make the map be visible or invisible by manipulating the slide of ``isVisible'', and edit, delete or download it via the three buttons in the ``Operation'' column. In addition, The button for creating a new map is in the lower right corner of the page, the user can enter a map name in the pop-up window after clicking it. Figure \ref{fig:GUI user dashboard} is the interface of the User dashboard page
+  \item The ``User Dashboard'' page displays all the maps belong to the current user. The user can filter them using any information of maps via the ``Filter'' on the left top corner. The user can click on the header to perform the sorting of the corresponding map properties. Also, the user is allowed to make the map be visible or invisible by manipulating the slide of ``isVisible'', and edit, delete or download it via the three buttons in the ``Operation'' column. In addition, The button for creating a new map is in the lower right corner of the page. The user can enter a map name in the pop-up window after clicking it. Figure \ref{fig:GUI user dashboard} is the interface of the User dashboard page.
 
   \begin{figure}[htbp]
   \centering
@@ -42,18 +40,44 @@ In our design, the user must register to log in before he can use the applicatio
   \caption[GUI: User Dashboard]{\label{fig:GUI user dashboard}GUI: User Dashboard}
   \end{figure}
 
-  \item The ``Profile'' page allows the user to change his email, password, or names. By the way, before changing the password, the user must first enter the old password. After the verification is passed, the new password can be entered. Figure \ref{fig:GUI profile} is the interface of the Profile page
+  \item The ``Profile'' page allows the user to change his email, password, first name, or last name. By the way, before changing the password, the user must first enter the old password. After the verification is passed, the new password can be entered. Figure \ref{fig:GUI profile} is the interface of the Profile page.
 
   \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{section04/assets/GUI-profile.png}
   \caption[GUI: Profile]{\label{fig:GUI profile}GUI: Profile}
   \end{figure}
-
 \end{enumerate}
 
 \subsection{Backend}
-% Node.js Express -> Auth -> REST APIs -> MongoDB
+The backend comprises the server, database, and APIs. The server running on the author's computer, the database is powered by MongoDB, and the APIs are RESTful. And on this basis, we chose Express.js because it is a lightweight Node.js framework, which allows us to define routes of our application based on HTTP methods and URLs so that we can easily apply the REST API design to them very well. Also, it includes various middleware modules that we can use to perform additional tasks on the request and response.
+
+To connect MongoDB to our Express application, we had to use an ORM to convert information from the database to a JavaScript application without SQL statements. ORM is short for Object Related Mapping, a technique that can be used to convert data among incompatible types. More specifically, ORMs mimic the actual database so we can operate within a programming language (e.g. JavaScript) without using a database query language (e.g. SQL) to interact with the database. For this application, we used Mongoose as the ORM, which is an object document modeling (ODM) layer that sits on top of the Node.js's MongoDB driver.
 
 \subsection{Map Generator}
 % Voronoi -> Lloyd's Relaxation -> D3 mouse events -> Layers: elevation, affluence,
+\subsubsection{Polygons}
+The first step is to render some polygons (cells). As we mentioned before in the design phase, we used the d3.voronoi library to implements Steven J. Fortune’s algorithm for computing the Voronoi diagram of a set of two-dimensional points. Figure \ref{fig:Voronoi polygons} is an example of random dots (red) and the polygons that result:
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{section04/assets/Map-voronoi.png}
+\caption[Voronoi polygons]{\label{fig:Voronoi polygons}Voronoi polygons}
+\end{figure}
+
+As we can see these random points tessellation is a little bit irregular, we wanted something closer to semi-randomness or quasi-randomness, not completely random points. So we approximated that by using a variant of Lloyd relaxation, also known as Voronoi iteration or relaxation, which is a fairly simple tweak to the random point locations to make them more evenly distributed. Lloyd relaxation replaces each point by the centroid of the polygon. Figure \ref{fig:Voronoi relaxed polygons} is the result after running approximate Lloyd relaxation 5 times:
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{section04/assets/Map-voronoi-relaxation.png}
+\caption[Voronoi polygons after 5 times of relaxation]{\label{fig:Voronoi relaxed polygons}Voronoi polygons after 5 times of relaxation}
+\end{figure}
+
+\subsubsection{Height Map}
+As we mentioned in the map generator design phase, the map should be a height map, so we introduced the concept of ``elevation''. We called these dots that generate polygons as sites, and each site has a polygon corresponding to it. Then we derived the sites object from the d3.voronoi object, and assigned the ``elevation'' property to it, whose value from 0 to 1. Before making the height map, we had to define the waterline, which is also from 0 to 1. If the value of elevation is greater than the waterline, the polygon represented by the site is the continent. Otherwise, it is water. Figure \ref{fig:Height Map} is an example that divides the world into the continent and water:
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{section04/assets/Map-heightmap.png}
+\caption[Height Map]{\label{fig:Height Map}Height Map}
+\end{figure}

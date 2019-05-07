@@ -17,7 +17,7 @@ The SPA model interacts with the user by providing updated content within the cu
 \label{sec:Design>Architecture Design>Web Application Server}
 The web application server manages business logic and data persistence and can be built using PHP, Python, Java, Ruby, .NET, Node.js, among other languages. It is comprised of at least a centralized hub or control center to support multi-layer applications. The essential purpose of a web server architecture is to complete requests made by clients for a website. The clients are typically browsers and mobile apps that make requests using secure HTTPs protocol, either for page resources or a REST API.
 
-Since the focus of this project is on the client side (frontend), which is the map generator (written in JavaScript), we chose the Node.js Express framework. Moreover, the Node.js is written using JavaScript and is the same technology as frontend components. This makes it easier for the developer to program backend services and frontend user interfaces. It also provides consistency, code sharing and reusability, simple knowledge-transfer, and a large number of free tools. These benefits bring flexibility and efficiency when building this project.
+Since the focus of this project is on the client side (frontend), which is the map generator (written in JavaScript), we chose the Node.js. Moreover, the Node.js is written using JavaScript and is the same technology as frontend components. This makes it easier for the developer to program backend services and frontend user interfaces. It also provides consistency, code sharing and reusability, simple knowledge-transfer, and a large number of free tools. These benefits bring flexibility and efficiency when building this project.
 
 \subsubsection{Database Server}
 \label{sec:Design>Architecture Design>Database Server}
@@ -43,15 +43,15 @@ Normalized Data Modeling provides One-to-One and One-to-Many Relationships. We c
 
 \subsection{REST API Design}
 \label{sec:Design>REST API Design}
-REST is the acronym for ``Representational State Transfer''. It is an architectural style for distributed hypermedia systems and was first presented by Roy Fielding in 2000 in his famous dissertation \cite{Fielding00architecturalstyles}.
+REST is the acronym for Representational State Transfer. It is an architectural style for distributed hypermedia systems and was first presented by Roy Fielding in 2000 in his famous dissertation \cite{Fielding00architecturalstyles}.
 
 Like any other architectural styles, REST has its own 6 guiding constraints, which must be satisfied if an interface conforms to the RESTful. These principles are listed below:
 \begin{enumerate}
-  \item Client–server. By separating the user interface concerns from the data storage concerns, it improves the portability of the user interface across multiple platforms and improve scalability by simplifying the server components
-  \item Stateless. Each request from a client to server must contain all of the information necessary to understand the request, and cannot take advantage of any stored context on the server. Session state is therefore kept entirely on the client
-  \item Cacheable. Cache constraints require that the data within a response to a request be implicitly or explicitly labeled as cacheable or non-cacheable. If a response is cacheable, then a client cache is given the right to reuse that response data for later, equivalent requests
+  \item Client–server. By separating the user interface concerns from the data storage concerns, it improves the portability of the user interface across multiple platforms and improve scalability by simplifying the server components.
+  \item Stateless. Each request from a client to server must contain all of the information necessary to understand the request, and cannot take advantage of any stored context on the server. Session state is therefore kept entirely on the client.
+  \item Cacheable. Cache constraints require that the data within a response to a request be implicitly or explicitly labeled as cacheable or non-cacheable. If a response is cacheable, then a client cache is given the right to reuse that response data for later, equivalent requests.
   \item Uniform interface. By applying the software engineering principle of generality to the component interface, the overall system architecture is simplified, and the visibility of interactions is improved.
-  \item Layered system. The layered system style allows an architecture to be composed of hierarchical layers by constraining component behavior such that each component cannot ``see'' beyond the immediate layer with which they are interacting
+  \item Layered system. The layered system style allows an architecture to be composed of hierarchical layers by constraining component behavior such that each component cannot ``see'' beyond the immediate layer with which they are interacting.
   \item Code on demand (optional). REST allows client functionality to be extended by downloading and executing code in the form of applets or scripts.
 \end{enumerate}
 
@@ -109,37 +109,36 @@ SVG is a language for describing 2D graphics in XML, which means every element i
 \label{sec:Design>Map Generator Design>Graphics Libraries}
 The more important thing is that we have not had any experience in developing a map generator before. However, we learned the necessary knowledge to maintain the continuation of development from similar websites, which mentioned in the section Background. In addition, developing this generator requires much professional geometric mathematics. If we build our own wheels, the time may not be enough. There are many open source third-party graphics libraries on the web, such as D3.js, Paper.js, Fabric.js, Three.js, and so on, which provide many ready-made and mature geometric construction methods. D3.js was chosen because of the following reasons:
 \begin{enumerate}
-  \item It is open source: so we can freely use the library, code and build our own maps
-  \item It has good and neat documentation of all the available functions and methods
-  \item There is a gallery with unique charts which can be referred to while developing our project
+  \item It is open source: so we can freely use the library, code and build our own maps.
+  \item It has good and neat documentation of all the available functions and methods.
+  \item There is a gallery with unique charts which can be referred to while developing our project.
 \end{enumerate}
 
 \subsubsection{Height Map}
 \label{sec:Design>Map Generator Design>Height Map}
-Before we get started to develop this map generator, we need to understand what is a map and decide what methods we are going to use to generate it. Simplifying the map is a two-dimensional representation of the surface of the world.
-The main thing that allows us to say whether an image is a map or not is the obvious partition between land and water parts. To have an ability to divide a canvas into land and water we need to know what pieces are lower than others, it means we need to generate a height map.
+Before we get started to develop this map generator, we need to understand what is a map and decide what methods we are going to use to generate it. Simplifying the map is a two-dimensional representation of the surface of the world. The main thing that allows us to say whether an image is a map or not is the obvious partition between land and water parts. To have an ability to divide a canvas into land and water we need to know what pieces are lower than others, it means we need to generate a height map.
 
 There are three main ways to generate a heightmap: use noise functions, use graph structure, or use both. Most procedural map generators use noise functions (midpoint displacement, fractal, diamond-square, Perlin noise, etc.) to generate a height map, but the result may look a bit like artificial. So we decided to use graph structure to model the things directed by gameplay constraints (elevation, affluence, desirability, district, buildings). We want this project to have the following main features:
 
 \begin{enumerate}
-  \item Once opening the map editor page, it will show an empty map with random map seeds by default, then the user can start making and editing maps by accessing the menu on the right
-  \item Entering the number of map seeds to create a new empty map in the menu or using the default seeds
-  \item Viewing different types of layers for the map: elevation, affluence, desirability, district, and building, which can superimpose on each other
-  \item Selecting different types of layers for the map: elevation, affluence, desirability, district, and building, which can superimpose on each other
-  \item Deciding to display street names or not
-  \item Manipulating the ``increase/decrease toggle'' to increase or decrease the value of elevation, affluence, and district
-  \item Manipulating the ``increment sliding'' to set the size of the increment
-  \item Manipulating the ``waterline sliding'' to make map cells as water or city
-  \item If the waterline is changed, the continent will be changed accordingly
-  \item Choosing to display contour lines or not
-  \item After selecting one or more than one layers under ``edit'' mode, the user can change the size of the "soft brush" by using the mouse wheel, which determines the area where the map will be edited
+  \item Once opening the map editor page, it will show an empty map with random map seeds by default, then the user can start making and editing maps by accessing the menu on the right.
+  \item Entering the number of map seeds to create a new empty map in the menu or using the default seeds.
+  \item Viewing different types of layers for the map: elevation, affluence, desirability, district, and building, which can superimpose on each other.
+  \item Selecting different types of layers for the map: elevation, affluence, desirability, district, and building, which can superimpose on each other.
+  \item Displaying street names or not.
+  \item Manipulating the ``increase/decrease toggle'' to increase or decrease the value of elevation, affluence, and district.
+  \item Manipulating the ``increment sliding'' to set the size of the increment.
+  \item Manipulating the ``waterline sliding'' to make map cells as water or city.
+  \item If the waterline is changed, the continent will be changed accordingly.
+  \item Displaying contour lines or not.
+  \item After selecting one or more than one layers under ``edit'' mode, the user can change the size of the "soft brush" by using the mouse wheel, which determines the area where the map will be edited.
   \item Editing the map by clicking and dragging the ``soft brush.''
-  \item The districts and buildings are procedurally generated
-  \item Allowing to change the type of the current district by right-clicking and selecting a new type from the context menu
-  \item The map provides 13 different types of districts: rich, medium, poor, empty, plaza, park, farm, water, harbor, university, religious, castle, and military
-  \item Zooming in and zooming out the map by pressing on the alt key and using the mouse wheel
-  \item Using a specialized button to resize the map on the right top
-  \item Saving the map or downloading it by clicking the button on the right bottom
+  \item The districts and buildings are procedurally generated.
+  \item Allowing to change the type of the current district by right-clicking and selecting a new type from the context menu.
+  \item The map provides 13 different types of districts: rich, medium, poor, empty, plaza, park, farm, water, harbor, university, religious, castle, and military.
+  \item Zooming in and zooming out the map by pressing on the alt key and using the mouse wheel.
+  \item Using a specialized button to resize the map on the right top.
+  \item Saving the map or downloading it by clicking the button on the right bottom.
 \end{enumerate}
 
-All these are based on the Voronoi Diagram. Thankfully, generating Voronoi Diagrams in JavaScript is easy to be implemented if we use D3.voronoi of Fortune’s algorithm by Mike Bostock.
+All these are based on the Voronoi diagram. Thankfully, generating Voronoi diagrams in JavaScript is easy to be implemented if we use d3.voronoi of Fortune’s algorithm by Mike Bostock.
