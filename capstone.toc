@@ -31,6 +31,12 @@
 \contentsline {subsection}{\numberline {4.2.}Backend}{20}{subsection.0.4.2}
 \contentsline {subsection}{\numberline {4.3.}Map Generator}{21}{subsection.0.4.3}
 \contentsline {subsubsection}{\numberline {4.3.1.}Polygons}{21}{subsubsection.0.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2.}Height Map}{21}{subsubsection.0.4.3.2}
-\contentsline {section}{\numberline {5.}References}{24}{section.0.5}
-\contentsline {section}{\numberline {6.}Appendices}{25}{section.0.6}
+\contentsline {subsubsection}{\numberline {4.3.2.}Elevation}{21}{subsubsection.0.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3.}Contour Line}{22}{subsubsection.0.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.4.}Soft Brush}{22}{subsubsection.0.4.3.4}
+\contentsline {subsubsection}{\numberline {4.3.5.}Layers}{24}{subsubsection.0.4.3.5}
+\contentsline {subsubsection}{\numberline {4.3.6.}Types}{25}{subsubsection.0.4.3.6}
+\contentsline {subsubsection}{\numberline {4.3.7.}Buildings}{25}{subsubsection.0.4.3.7}
+\contentsline {subsubsection}{\numberline {4.3.8.}Streets}{25}{subsubsection.0.4.3.8}
+\contentsline {section}{\numberline {5.}References}{26}{section.0.5}
+\contentsline {section}{\numberline {6.}Appendices}{27}{section.0.6}

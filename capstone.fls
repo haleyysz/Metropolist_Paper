@@ -224,6 +224,9 @@ INPUT ./section04/assets/Map-voronoi-relaxation.png
 INPUT section04/assets/Map-heightmap.png
 INPUT ./section04/assets/Map-heightmap.png
 INPUT ./section04/assets/Map-heightmap.png
+INPUT section04/assets/Map-contourline.png
+INPUT ./section04/assets/Map-contourline.png
+INPUT ./section04/assets/Map-contourline.png
 INPUT capstone.bbl
 INPUT capstone.bbl
 INPUT capstone.aux
@@ -231,6 +234,7 @@ INPUT ./capstone.out
 INPUT ./capstone.out
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb

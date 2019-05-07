@@ -57,7 +57,7 @@ To connect MongoDB to our Express application, we had to use an ORM to convert i
 \subsection{Map Generator}
 % Voronoi -> Lloyd's Relaxation -> D3 mouse events -> Layers: elevation, affluence,
 \subsubsection{Polygons}
-The first step is to render some polygons (cells). As we mentioned before in the design phase, we used the d3.voronoi library to implements Steven J. Fortune’s algorithm for computing the Voronoi diagram of a set of two-dimensional points. Figure \ref{fig:Voronoi polygons} is an example of random dots (red) and the polygons that result:
+The first step is to render some polygons (cells). As we mentioned before in the design phase, we used the d3.voronoi library to implements Steven J. Fortune’s algorithm for computing the Voronoi diagram or Delaunay triangulation of a set of two-dimensional points. Figure \ref{fig:Voronoi polygons} is an example of random dots (red) and the polygons that result:
 
 \begin{figure}[htbp]
 \centering
@@ -65,7 +65,7 @@ The first step is to render some polygons (cells). As we mentioned before in the
 \caption[Voronoi polygons]{\label{fig:Voronoi polygons}Voronoi polygons}
 \end{figure}
 
-As we can see these random points tessellation is a little bit irregular, we wanted something closer to semi-randomness or quasi-randomness, not completely random points. So we approximated that by using a variant of Lloyd relaxation, also known as Voronoi iteration or relaxation, which is a fairly simple tweak to the random point locations to make them more evenly distributed. Lloyd relaxation replaces each point by the centroid of the polygon. Figure \ref{fig:Voronoi relaxed polygons} is the result after running approximate Lloyd relaxation 5 times:
+As we can see these random points tessellation is a little bit irregular, we wanted something closer to semi-randomness or quasi-randomness, not completely random points. So we approximated that by using a variant of Lloyd relaxation, also known as Voronoi iteration or relaxation, which is a fairly simple tweak to the random point locations to make them more evenly distributed. Lloyd relaxation replaces each point by the centroid of the polygon. The more iterations, the more regular the polygons get. Figure \ref{fig:Voronoi relaxed polygons} is the result after running approximate Lloyd relaxation 5 times:
 
 \begin{figure}[htbp]
 \centering
@@ -73,11 +73,67 @@ As we can see these random points tessellation is a little bit irregular, we wan
 \caption[Voronoi polygons after 5 times of relaxation]{\label{fig:Voronoi relaxed polygons}Voronoi polygons after 5 times of relaxation}
 \end{figure}
 
-\subsubsection{Height Map}
-As we mentioned in the map generator design phase, the map should be a height map, so we introduced the concept of ``elevation''. We called these dots that generate polygons as sites, and each site has a polygon corresponding to it. Then we derived the sites object from the d3.voronoi object, and assigned the ``elevation'' property to it, whose value from 0 to 1. Before making the height map, we had to define the waterline, which is also from 0 to 1. If the value of elevation is greater than the waterline, the polygon represented by the site is the continent. Otherwise, it is water. Figure \ref{fig:Height Map} is an example that divides the world into the continent and water:
+\subsubsection{Elevation}
+As we mentioned in the map generator design phase, the map should be a height map, so we introduced the concept of ``elevation''. We called these dots that generate polygons as sites, and each site has a polygon corresponding to it. Then we derived the sites object from the d3.voronoi object, and assigned the ``elevation'' property to it, whose value from 0 to 1. Before making the height map, we defined the waterline, which is also from 0 to 1. If the value of elevation is greater than the waterline, the polygon represented by the site is the continent. Otherwise, it is water. Also, the darker the polygon is, the higher the elevation it represents. As the waterline rises, the continents with lower altitudes will be flooded and become water. So in the beginning, we set all the polygons to be continents and have an initial elevation that is 0.35. If the user wants to create water, then he should manually edit them. Figure \ref{fig:Height Map} is an example that divides the world into the continent and water:
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{section04/assets/Map-heightmap.png}
-\caption[Height Map]{\label{fig:Height Map}Height Map}
+\caption[Continent and Water]{\label{fig:Height Map}Continent and Water}
 \end{figure}
+
+\subsubsection{Contour Line}
+We calculated the contour line of the map, which is determined by the elevation of each polygon, and is also based on the delaunay triangle, which comes from d3.voronoi.triangles.
+
+These triangles link to each site, and each point has an elevation attribute. So when we set a value between 0 and 1, we loop every edge of every Delaunay triangle. If this value is between the elevation values of the two sites to which it is connected, we mark the point represented by this value and then connect all such points. Algorithm \ref{alg:draw contourline} describes the idea.
+
+\begin{algorithm}
+\caption{Draw contour lines for elevation X}
+\label{alg:draw contourline}
+\begin{algorithmic}
+\REQUIRE $X \geq 0 \wedge X \leq 1$
+\FOR{every triangle $T$}
+\FOR{every edge $E1$, $E2$ in $T$}
+\IF{$X \in E1 \& E2$}
+\STATE Draw line from $E1$ to $E2$
+\ENDIF
+\ENDFOR
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+We expect the user can determine the terrain by contour lines and use the tools we provided to edit the map. Figure \ref{fig:contour line} gives an example that draws four contour lines based on the value of waterline and couple elevation values: 0.25, 0.5, and 0.75.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{section04/assets/Map-contourline.png}
+\caption[A map with contour lines]{\label{fig:contour line}A map with contour lines}
+\end{figure}
+
+\subsubsection{Soft Brush}
+As mentioned in the previous section, the user needs to edit the map manually, so we provided some methods of operation, the most important of which is the soft brush. The soft brush is a circle that follows the mouse movement, and its role is to change the specific attribute values of all sites in the range.
+
+In terms of elevation, the user can click and drag the soft brush to change the elevation of the selected sites accordingly. Generally speaking, the longer the distance is dragged, The more values are changed. The user first selects one of the two modes of ``increase'' or ``decrease''. Correspondingly, the attribute value of the site is increased or decreased under the operation of the soft brush. And the size of the soft brush can be enlarged or reduced by the mouse wheel.
+
+\subsubsection{Layers}
+Just like introducing the concept of elevation and assigning it to the sites, we then introduced the concepts listed below (including elevation):
+
+\begin{enumerate}
+  \item elevation: Represents the altitude of the area, from 0 to 1.
+  \item affluence: Represents the wealth of the region (polygon), from 0 to 1.
+  \item desirability: Represents the attraction of the region to people, from 0 to infinity.
+  \item district: Displays different colors according to different regions; displays city walls.
+  \item building: Displays buildings of specific districts.
+\end{enumerate}
+
+Each layer comes with two modes, ``view'' and ``edit''. Once the user has checked the edit option of a layer, its view option will also be checked; once the view option of a layer is unchecked, its edit option will also be unchecked.
+
+The user can view them by checking different layers, and the layers can be superimposed on each other. For each polygon, we took the average of the sum of the currently selected layers color values as its background color.
+
+\subsubsection{Types}
+Based on the continent and water, we subdivided the regions on the continent into 13 types:
+
+\subsubsection{Buildings}
+
+
+\subsubsection{Streets}
