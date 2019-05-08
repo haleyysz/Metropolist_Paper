@@ -8,45 +8,46 @@ which is inspired by Google Material Design. Angular Material components help in
 In our design, the user must register to log in before he can use the application, so the home page is the login page. Luckily, Angular provides multiple routing guards, and the CanActivate interface is a good way for us to implement our own authentication routing. In addition, as we mentioned in Section \ref{sec:Requirements>Non-Functional Requirements} Non-Functional Requirements, every form must be validated by the client side before being submitted to the server side. The Implementation of GUI is listed below:
 
 \begin{enumerate}
-  \item The ``Sign Up'' form requires the user to enter a unique and valid email, first name, last name, password, and confirmed password. The user can click the icon on the right of the password input to make his password visible or invisible. Also, the ``clear'' button on the left bottom corner is used to clear all inputs of the Sign-Up form. The user can also click the ``Log in instead'' button to be redirected to the ``Log In'' page if he already has an account. Figure \ref{fig:GUI signup} is the interface of the ``Sign Up'' page.
+  \item The ``Sign Up'' form requires the user to enter a unique and valid email, first name, last name, password, and confirmed password. The user can click the icon on the right of the password input to make his password visible or invisible. Also, the ``clear'' button on the left bottom corner is used to clear all inputs of the sign up form. The user can also click the ``Log in instead'' button to be redirected to the ``Log In'' page if he already has an account. Figure \ref{fig:GUI signup} is the interface of the ``Sign Up'' page.
 
   \begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{section04/assets/GUI-signup.png}
-  \caption[GUI: Sign Up]{\label{fig:GUI signup}GUI: Sign Up}
+    \includegraphics[width=\textwidth]{section04/assets/GUI-signup.png}
+    \caption{Signup page}
+    \label{fig:GUI signup}
   \end{figure}
 
-  \item The ``Log In'' form requires the user to enter the email and the password. Also, the user can access to the Sign-Up page via the ``Create account'' button on the bottom. Figure \ref{fig:GUI login} is the interface of the ``Log In'' page.
+  \item The ``Log In'' form requires the user to enter the email and the password. Also, the user can access to the ``Sign Up'' page via the ``Create account'' button on the bottom. Figure \ref{fig:GUI login} is the interface of the ``Log In'' page.
 
   \begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{section04/assets/GUI-login.png}
-  \caption[GUI: Log In]{\label{fig:GUI login}GUI: Log In}
+    \includegraphics[width=\textwidth]{section04/assets/GUI-login.png}
+    \caption{Login page}
+    \label{fig:GUI login}
   \end{figure}
 
   \item The ``Community'' page shows all the maps that can be viewed, which are marked by their own owners as ``isVisible.'' Besides, the user can filter maps using map name, owner's email, owner's first name, or owner's last name via the ``Filter'' on the left top corner. Figure \ref{fig:GUI community} is the interface of the ``Community'' page.
 
   \begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{section04/assets/GUI-community.png}
-  \caption[GUI: Community]{\label{fig:GUI community}GUI: Community}
+    \includegraphics[width=\textwidth]{section04/assets/GUI-community.png}
+    \caption{Community page}
+    \label{fig:GUI community}
   \end{figure}
 
   \item The ``User Dashboard'' page displays all the maps belong to the current user. The user can filter them using any information of maps via the ``Filter'' on the left top corner. The user can click on the header to perform the sorting of the corresponding map properties. Also, the user is allowed to make the map be visible or invisible by manipulating the slide of ``isVisible'', and edit, delete or download it via the three buttons in the ``Operation'' column. In addition, The button for creating a new map is in the lower right corner of the page. The user can enter a map name in the pop-up window after clicking it. Figure \ref{fig:GUI user dashboard} is the interface of the User dashboard page.
 
   \begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{section04/assets/GUI-user.png}
-  \caption[GUI: User Dashboard]{\label{fig:GUI user dashboard}GUI: User Dashboard}
+    \includegraphics[width=\textwidth]{section04/assets/GUI-user.png}
+    \caption{User dashboard page}
+    \label{fig:GUI user dashboard}
   \end{figure}
 
   \item The ``Profile'' page allows the user to change his email, password, first name, or last name. By the way, before changing the password, the user must first enter the old password. After the verification is passed, the new password can be entered. Figure \ref{fig:GUI profile} is the interface of the Profile page.
 
   \begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{section04/assets/GUI-profile.png}
-  \caption[GUI: Profile]{\label{fig:GUI profile}GUI: Profile}
+    \includegraphics[width=\textwidth]{section04/assets/GUI-profile.png}
+    \caption{Profile page}
+    \label{fig:GUI profile}
   \end{figure}
+
 \end{enumerate}
 
 \subsection{Backend}
@@ -57,7 +58,7 @@ To connect MongoDB to our Express application, we had to use an ORM to convert i
 \subsection{Map Generator}
 % Voronoi -> Lloyd's Relaxation -> D3 mouse events -> Layers: elevation, affluence,
 \subsubsection{Polygons}
-The first step is to render some polygons (cells). As we mentioned before in the design phase, we used the d3.voronoi library to implements Steven J. Fortune’s algorithm for computing the Voronoi diagram or Delaunay triangulation of a set of two-dimensional points. Figure \ref{fig:Voronoi polygons} is an example of random dots (red) and the polygons that result:
+The first step is to render some polygons (cells). As we mentioned before in the design phase, we used the d3.voronoi library to implements Steven J. Fortune’s algorithm for computing the Voronoi diagram or Delaunay triangulation of a set of two-dimensional points. Figure \ref{fig:Voronoi polygons} is an example of 100 dots (red) and corresponding 100 polygons:
 
 \begin{figure}[htbp]
 \centering
@@ -68,24 +69,24 @@ The first step is to render some polygons (cells). As we mentioned before in the
 As we can see these random points tessellation is a little bit irregular, we wanted something closer to semi-randomness or quasi-randomness, not completely random points. So we approximated that by using a variant of Lloyd relaxation, also known as Voronoi iteration or relaxation, which is a fairly simple tweak to the random point locations to make them more evenly distributed. Lloyd relaxation replaces each point by the centroid of the polygon. The more iterations, the more regular the polygons get. Figure \ref{fig:Voronoi relaxed polygons} is the result after running approximate Lloyd relaxation 5 times:
 
 \begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{section04/assets/Map-voronoi-relaxation.png}
-\caption[Voronoi polygons after 5 times of relaxation]{\label{fig:Voronoi relaxed polygons}Voronoi polygons after 5 times of relaxation}
+  \includegraphics[width=\textwidth]{section04/assets/Map-voronoi-relaxation.png}
+  \caption{Voronoi polygons after 5 times of relaxation}
+  \label{fig:Voronoi relaxed polygons}
 \end{figure}
 
 \subsubsection{Elevation}
-As we mentioned in the map generator design phase, the map should be a height map, so we introduced the concept of ``elevation''. We called these dots that generate polygons as sites, and each site has a polygon corresponding to it. Then we derived the sites object from the d3.voronoi object, and assigned the ``elevation'' property to it, whose value from 0 to 1. Before making the height map, we defined the waterline, which is also from 0 to 1. If the value of elevation is greater than the waterline, the polygon represented by the site is the continent. Otherwise, it is water. Also, the darker the polygon is, the higher the elevation it represents. As the waterline rises, the continents with lower altitudes will be flooded and become water. So in the beginning, we set all the polygons to be continents and have an initial elevation that is 0.35. If the user wants to create water, then he should manually edit them. Figure \ref{fig:Height Map} is an example that divides the world into the continent and water:
+As we mentioned in the map generator design phase, the map should be a height map, so we introduced the concept of ``elevation''. We called these dots that generate polygons as sites, and each site corresponds to a polygon. Then we derived the sites object from the d3.voronoi object, and assigned the ``elevation'' property to it, whose value from 0 to 1. Before making the height map, we defined the waterline, which is also from 0 to 1. If the value of elevation is greater than the waterline, the polygon represented by the site is the continent. Otherwise, it is water. Also, the darker the polygon is, the higher the elevation it represents. As the waterline rises, the continents with lower altitudes will be flooded and become water. So in the beginning, we set all the polygons to be continents and have an initial elevation that is 0.35. If the user wants to create water, then he should manually edit them. Figure \ref{fig:Height Map} is an example that divides the world into the continent and water:
 
 \begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{section04/assets/Map-heightmap.png}
-\caption[Continent and Water]{\label{fig:Height Map}Continent and Water}
+  \includegraphics[width=\textwidth]{section04/assets/Map-heightmap.png}
+  \caption{Continent and Water}
+  \label{fig:Height Map}
 \end{figure}
 
-\subsubsection{Contour Line}
-We calculated the contour line of the map, which is determined by the elevation of each polygon, and is also based on the delaunay triangle, which comes from d3.voronoi.triangles.
+\subsubsection{Contour Lines}
+We calculated the contour lines of the map, which are determined by the elevation of each polygon. The calculation is based on the Delaunay triangle, which is related to the Voronoi diagram. Every triangle in the Delaunay triangulation corresponds to a polygon corner in the Voronoi diagram. Every polygon in the Voronoi diagram corresponds to a corner of a Delaunay triangle. Every edge in the Delaunay graph corresponds to an edge in the Voronoi graph. We got these triangles directly from d3.voronoi.triangles().
 
-These triangles link to each site, and each point has an elevation attribute. So when we set a value between 0 and 1, we loop every edge of every Delaunay triangle. If this value is between the elevation values of the two sites to which it is connected, we mark the point represented by this value and then connect all such points. Algorithm \ref{alg:draw contourline} describes the idea.
+These triangles link to every site, and each site has an ``elevation'' attribute. We set an elevation value between 0 and 1, and then loop every edge of every Delaunay triangle. If this value is between the elevation values of the two sites to which it is connected, we mark the point represented by this value and then connect all such points. Algorithm \ref{alg:draw contourline} describes the idea.
 
 \begin{algorithm}
 \caption{Draw contour lines for elevation X}
@@ -94,7 +95,7 @@ These triangles link to each site, and each point has an elevation attribute. So
 \REQUIRE $X \geq 0 \wedge X \leq 1$
 \FOR{every triangle $T$}
 \FOR{every edge $E1$, $E2$ in $T$}
-\IF{$X \in E1 \& E2$}
+\IF{$X \in$ [E1, E2]}
 \STATE Draw line from $E1$ to $E2$
 \ENDIF
 \ENDFOR
@@ -102,38 +103,78 @@ These triangles link to each site, and each point has an elevation attribute. So
 \end{algorithmic}
 \end{algorithm}
 
-We expect the user can determine the terrain by contour lines and use the tools we provided to edit the map. Figure \ref{fig:contour line} gives an example that draws four contour lines based on the value of waterline and couple elevation values: 0.25, 0.5, and 0.75.
+We expected the user can edit the terrain by contour lines by the tools we provided. Figure \ref{fig:contour line} gives an example that draws four contour lines based on the value of waterline (blue) and several elevation values: 0.25 (red), 0.5 (green), and 0.75 (yellow).
 
 \begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{section04/assets/Map-contourline.png}
-\caption[A map with contour lines]{\label{fig:contour line}A map with contour lines}
+  \includegraphics[width=\textwidth]{section04/assets/Map-contourline.png}
+  \caption{A map with contour lines}
+  \label{fig:contour line}
 \end{figure}
 
 \subsubsection{Soft Brush}
-As mentioned in the previous section, the user needs to edit the map manually, so we provided some methods of operation, the most important of which is the soft brush. The soft brush is a circle that follows the mouse movement, and its role is to change the specific attribute values of all sites in the range.
+As mentioned in the previous section, the user needs to edit the map manually. So we provided some methods of operations, the most important of which is the soft brush. The soft brush is a circle that follows the mouse movement, and its role is to change the specific attribute values of all sites in the range.
 
 In terms of elevation, the user can click and drag the soft brush to change the elevation of the selected sites accordingly. Generally speaking, the longer the distance is dragged, The more values are changed. The user first selects one of the two modes of ``increase'' or ``decrease''. Correspondingly, the attribute value of the site is increased or decreased under the operation of the soft brush. And the size of the soft brush can be enlarged or reduced by the mouse wheel.
 
 \subsubsection{Layers}
-Just like introducing the concept of elevation and assigning it to the sites, we then introduced the concepts listed below (including elevation):
+In our design, 5 different layers were applied to the map. Each layer comes with two modes, ``view'' and ``edit''. Once the user has checked the edit option of a layer, its view option will also be checked; once the view option of a layer is unchecked, its edit option will also be unchecked. We always keep at least layer to make sure the normal display of the map although the user unchecked all of them.
+
+Just like introducing the concept of elevation and assigning it to sites, we then introduced the concepts listed below (including elevation) and assigned them to sites:
 
 \begin{enumerate}
-  \item elevation: Represents the altitude of the area, from 0 to 1.
-  \item affluence: Represents the wealth of the region (polygon), from 0 to 1.
-  \item desirability: Represents the attraction of the region to people, from 0 to infinity.
-  \item district: Displays different colors according to different regions; displays city walls.
-  \item building: Displays buildings of specific districts.
+  \item The elevation layer represents the altitude of the area, whose value is from 0 to 1. The elevation of any place in a polygon is the same.
+  \item The affluence layer represents the wealth of the district (polygon), whose value is from 0 to 1. The lower the value, the poorer the area, vice versa. It is usually used to divide residential areas.
+  \item The desirability layer represents the attraction of the region to people, from 0 to infinity. People generally prefer to live in places with higher desirability.
+  \item The district layer allows the user to assign types to districts. Correspondingly, different types of districts have different background colors. In addition, the user can use the soft brush to render the city wall under this layer.
+  \item The building layer displays buildings of various districts. These buildings are procedurally generated, so the user can change them by changing the type of the district.
 \end{enumerate}
 
-Each layer comes with two modes, ``view'' and ``edit''. Once the user has checked the edit option of a layer, its view option will also be checked; once the view option of a layer is unchecked, its edit option will also be unchecked.
+The user can view them by checking different layers, and layers can be superimposed on each other. For each polygon, we took the average of the sum of the currently selected layers of color values as its background color.
 
-The user can view them by checking different layers, and the layers can be superimposed on each other. For each polygon, we took the average of the sum of the currently selected layers color values as its background color.
+\subsubsection{City Wall}
+As a fantasy map of the medieval city, the city wall is always an essential part. Our map generator allows the user to create walls manually.
+
+The basic idea is to assign the ``wall'' attribute to each site and then give it an initial value with 0, which means there are no walls in this district. Another value is 1, representing there is the city wall in this district. The user increases or decreases the value of the wall by using the soft brush to render or erase the city wall. We used the d3.topojson library to merge all the districts with walls, which returned multiple merged polygons. Interior borders shared by adjacent polygons in merged polygons are removed. As we can see in Figure \ref{fig:city wall}.
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth]{section04/assets/Map-wall.png}
+  \caption{A map with city wall}
+  \label{fig:city wall}
+\end{figure}
 
 \subsubsection{Types}
-Based on the continent and water, we subdivided the regions on the continent into 13 types:
+Based on the continent and water, we subdivided the districts (including water) into 13 types, and we assumed that the value of desirability determines most of them. The equation and the assignment conditions are listed below:
+
+\[ desirability = (elevation + affluence) / 2 \]
+
+\begin{enumerate}
+  \item rich: $0.8 \leq desirability \geq 1$
+  \item medium: $0.6 < desirability > 0.8$
+  \item poor: $waterline < desirability \geq 0.6$
+  \item university: $rich > 4 \wedge \mathbf{count} \{university\} < 2.5 / 100 * \mathbf{count} \{polygons\}$
+  \item park: $\{poor, medium, rich\} \subset \{neighbours\}$
+  \item plaza: $\{poor, medium, rich\} \subset \{neighbours\}$
+  \item water: $elevation \leq waterline$
+  \item harbor: $\{poor, water\} \subset \{neighbours\}$
+  \item farm: $waterline < desirability \wedge elevation <= 0.45$
+  \item empty: $desirability = 0 \, \wedge \, (waterline < desirability \leq 0.45)$
+  \item castle: $\mathbf{max}\,desirability$
+  \item military: The military always surrounds the castle
+  \item religious: $Math.random() > 0.99 \, \wedge \, \mathbf{count} \{religious\} < 2.5 / 100 * \mathbf{count} \{polygons\}$
+\end{enumerate}
+
+In our design, sites closest to the boundary can only be assigned as empty, farm, or water.
 
 \subsubsection{Buildings}
+One of the most important parts is the generation of buildings, which is procedural.
+The main idea of creating buildings is the segmentation of polygons. Because the time to build the wheel was too long, we used a third-party library called poly-split-js written by Kladess. It implemented the polygon-splitting algorithm written by Sumit Khetarpal based on Dr. Rossignac's research. The algorithm splits polygons into any number of equal areas while ensuring the minimum length of line based cuts. It also works for both convex and concave polygons, as long as they don't have non-manifold vertices, and can be traversed with a single loop.
 
+Before we generating the buildings, we first introduced the concept of a block. A district may have many blocks, and a block may contain many buildings. We first split all polygons except type water, then we got the preliminary version of the city map. Figure \ref{fig:city blocks} is an example of implementation.
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth]{section04/assets/Map-blocks.png}
+  \caption{A city map with blocks}
+  \label{fig:city blocks}
+\end{figure}
 
 \subsubsection{Streets}

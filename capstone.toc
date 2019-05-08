@@ -1,8 +1,8 @@
 \contentsline {section}{Abstract}{i}{section*.1}
 \contentsline {section}{Acknowledgments}{ii}{section*.2}
-\contentsline {section}{List of Tables}{iv}{section*.4}
-\contentsline {section}{List of Figures}{v}{section*.5}
-\contentsline {section}{Glossary}{vi}{section*.6}
+\contentsline {section}{List of Tables}{v}{section*.4}
+\contentsline {section}{List of Figures}{vi}{section*.5}
+\contentsline {section}{Glossary}{vii}{section*.6}
 \contentsline {section}{\numberline {1.}Introduction}{1}{section.0.1}
 \contentsline {subsection}{\numberline {1.1.}Background}{1}{subsection.0.1.1}
 \contentsline {subsection}{\numberline {1.2.}Similar Systems}{1}{subsection.0.1.2}
@@ -32,11 +32,12 @@
 \contentsline {subsection}{\numberline {4.3.}Map Generator}{21}{subsection.0.4.3}
 \contentsline {subsubsection}{\numberline {4.3.1.}Polygons}{21}{subsubsection.0.4.3.1}
 \contentsline {subsubsection}{\numberline {4.3.2.}Elevation}{21}{subsubsection.0.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.3.}Contour Line}{22}{subsubsection.0.4.3.3}
-\contentsline {subsubsection}{\numberline {4.3.4.}Soft Brush}{22}{subsubsection.0.4.3.4}
+\contentsline {subsubsection}{\numberline {4.3.3.}Contour Lines}{22}{subsubsection.0.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.4.}Soft Brush}{24}{subsubsection.0.4.3.4}
 \contentsline {subsubsection}{\numberline {4.3.5.}Layers}{24}{subsubsection.0.4.3.5}
-\contentsline {subsubsection}{\numberline {4.3.6.}Types}{25}{subsubsection.0.4.3.6}
-\contentsline {subsubsection}{\numberline {4.3.7.}Buildings}{25}{subsubsection.0.4.3.7}
-\contentsline {subsubsection}{\numberline {4.3.8.}Streets}{25}{subsubsection.0.4.3.8}
-\contentsline {section}{\numberline {5.}References}{26}{section.0.5}
-\contentsline {section}{\numberline {6.}Appendices}{27}{section.0.6}
+\contentsline {subsubsection}{\numberline {4.3.6.}City Wall}{25}{subsubsection.0.4.3.6}
+\contentsline {subsubsection}{\numberline {4.3.7.}Types}{25}{subsubsection.0.4.3.7}
+\contentsline {subsubsection}{\numberline {4.3.8.}Buildings}{27}{subsubsection.0.4.3.8}
+\contentsline {subsubsection}{\numberline {4.3.9.}Streets}{27}{subsubsection.0.4.3.9}
+\contentsline {section}{\numberline {5.}References}{28}{section.0.5}
+\contentsline {section}{\numberline {6.}Appendices}{29}{section.0.6}

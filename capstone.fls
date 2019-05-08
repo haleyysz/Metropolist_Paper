@@ -227,6 +227,14 @@ INPUT ./section04/assets/Map-heightmap.png
 INPUT section04/assets/Map-contourline.png
 INPUT ./section04/assets/Map-contourline.png
 INPUT ./section04/assets/Map-contourline.png
+INPUT section04/assets/Map-wall.png
+INPUT ./section04/assets/Map-wall.png
+INPUT ./section04/assets/Map-wall.png
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
+INPUT section04/assets/Map-blocks.png
+INPUT ./section04/assets/Map-blocks.png
+INPUT ./section04/assets/Map-blocks.png
 INPUT capstone.bbl
 INPUT capstone.bbl
 INPUT capstone.aux
