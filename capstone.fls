@@ -235,6 +235,12 @@ INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
 INPUT section04/assets/Map-blocks.png
 INPUT ./section04/assets/Map-blocks.png
 INPUT ./section04/assets/Map-blocks.png
+INPUT section04/assets/Map-buildings.png
+INPUT ./section04/assets/Map-buildings.png
+INPUT ./section04/assets/Map-buildings.png
+INPUT section04/assets/Map-streets.png
+INPUT ./section04/assets/Map-streets.png
+INPUT ./section04/assets/Map-streets.png
 INPUT capstone.bbl
 INPUT capstone.bbl
 INPUT capstone.aux
