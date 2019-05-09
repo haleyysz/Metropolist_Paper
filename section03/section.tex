@@ -23,15 +23,15 @@ Since the focus of this project is on the client side (frontend), which is the m
 \label{sec:Design>Architecture Design>Database Server}
 The database server provides and stores relevant data for the application. Additionally, it may also supply the business logic and other information that is managed by the web application server. There are multiple popular database systems available: Oracle, MySQL, Microsoft SQL Server, PostgreSQL, MongoDB, MariaDB, DB2, and SAP HANA.
 
-Because the project involves a small number of entities, the relationships among entities are not complicated, and the choice of the Software Development Life Cycle (SDLC) model, we chose the MongoDB, which is dynamic, flexible and easy to get started. It also provides high performance, high availability, and high scalability. More importantly, our main purpose is to save maps and implement basic CRUD (create, retrieve, update, delete) operations of the database. As MongoDB is a schema-less database (written in C++), we can serialize the map data to JSON, send it to MongoDB and then save it.
+Because the project involves a small number of entities, the relationships among entities are not complicated, and the choice of the Software Development Life Cycle (SDLC) model, we chose MongoDB, which is dynamic, flexible and easy to get started. It also provides high performance, high availability, and high scalability. More importantly, our main purpose is to save maps and implement basic CRUD (create, retrieve, update, delete) operations of the database. As MongoDB is a schema-less database (written in C++), we can serialize the map data to JSON, send it to MongoDB and then save it.
 
 \subsection{Database Design}
 \label{sec:Design>Database Design}
-NoSQL stands for "not only SQL," which is an approach to database design that can accommodate a wide variety of data models, including key-value, document, columnar and graph formats. MongoDB is a type of NoSQL database. A record in MongoDB is a document, which is a data structure composed of field and value pairs. MongoDB documents are similar to JSON objects, because the values of fields may include other documents, arrays, and arrays of documents.
+NoSQL stands for "Not only SQL," which is an approach to database design that can accommodate a wide variety of data models, including key-value, document, columnar and graph formats. MongoDB is a type of NoSQL database. A record in MongoDB is a document, which is a data structure composed of field and value pairs. MongoDB documents are similar to JSON objects, because the values of fields may include other documents, arrays, and arrays of documents.
 
 The system supports only two document types: the user and the map. A user can have many maps, but a map can only belong to one user. Thus, the relationship between the user and the map should be one-to-many.
 
-MongoDB provides two ways of data modeling: Embedded Data Modeling and Normalized Data Modeling. Using Embedded Data Modeling, we may embed related data in a single structure or document, which means we should store maps in the user schema. However, the data of the map is relatively large, in general, it may exceed the maximum BSON document size set by the MongoDB, and the map cannot exist as a separate entity. Though embedding provides better performance for reading operations, as well as the ability to request and retrieve related data in a single database operation, it is still beyond our consideration.
+MongoDB provides two ways of data modeling: Embedded Data Modeling and Normalized Data Modeling. Using Embedded Data Modeling, we may embed related data in a single structure or document, which means we should store maps in the user schema. However, the data of the map is relatively large, in general, it may exceed the maximum BSON document size set by MongoDB, and the map cannot exist as a separate entity. Though embedding provides better performance for reading operations, as well as the ability to request and retrieve related data in a single database operation, it is still beyond our consideration.
 
 Normalized Data Modeling provides One-to-One and One-to-Many Relationships. We chose the Normalized One-to-Many Structure, which uses references between documents, and provides more flexibility than embedding. Figure \ref{fig:ER Diagram} is the Entity Relationship Diagram that describes the relationship between the user and the map.
 
@@ -101,13 +101,13 @@ Based on these principles, we have designed the APIs shown in Table \ref{tab:RES
 \label{sec:Design>Map Generator Design}
 \subsubsection{Canvas and SVG}
 \label{sec:Design>Map Generator Design>Canvas and SVG}
-Since the project is a web application, the map generator should run on the web page. We need to choose a 2D HTML Graphics Tool to render it, such as Canvas or SVG.
+Since the project is a web application, the map generator must be able to run on the web page. We need to choose a 2D HTML Graphics Tool to render it, such as Canvas or SVG.
 
-SVG is a language for describing 2D graphics in XML, which means every element is available within the SVG DOM, you can attach JavaScript event handlers for an element. In SVG, each drawn shape is remembered as an object. If attributes of an SVG object are changed, the browser can automatically re-render the shape. Canvas draws 2D graphics, on the fly (with a JavaScript) by rendering pixel by pixel. In canvas, once the graphics are drawn, it is forgotten by the browser. If its position should be changed, the entire scene needs to be redrawn, including any objects that might have been covered by the graphics. We chose Canvas not only because there are always many elements in a map, but also there are many third-party JavaScript graphics libraries that can provide support.
+SVG is a language for describing 2D graphics in XML, which means every element is available within the SVG DOM, you can attach JavaScript event handlers for an element. In SVG, each drawn shape is remembered as an object. If attributes of an SVG object are changed, the browser can automatically re-render the shape. Canvas draws 2D graphics, on the fly (with JavaScript) by rendering pixel by pixel. In canvas, once the graphics are drawn, it is forgotten by the browser. If its position should be changed, the entire scene needs to be redrawn, including any objects that might have been covered by the graphics. We chose Canvas not only because there are always many elements in a map, but also there are many third-party JavaScript graphics libraries that can provide support.
 
 \subsubsection{Graphics Libraries}
 \label{sec:Design>Map Generator Design>Graphics Libraries}
-The more important thing is that we have not had any experience in developing a map generator before. However, we learned the necessary knowledge to maintain the continuation of development from similar websites, which mentioned in the section Background. In addition, developing this generator requires much professional geometric mathematics. If we build our own wheels, the time may not be enough. There are many open source third-party graphics libraries on the web, such as D3.js, Paper.js, Fabric.js, Three.js, and so on, which provide many ready-made and mature geometric construction methods. D3.js was chosen because of the following reasons:
+There are many open source third-party graphics libraries on the web, such as D3.js, Paper.js, Fabric.js, Three.js, and so on, which provide many ready-made and mature geometric construction methods. D3.js was chosen because of the following reasons:
 \begin{enumerate}
   \item It is open source: so we can freely use the library, code and build our own maps.
   \item It has good and neat documentation of all the available functions and methods.
@@ -131,8 +131,8 @@ There are three main ways to generate a heightmap: use noise functions, use grap
   \item Manipulating the ``waterline sliding'' to make map cells as water or city.
   \item If the waterline is changed, the continent will be changed accordingly.
   \item Displaying contour lines or not.
-  \item After selecting one or more than one layers under ``edit'' mode, the user can change the size of the "soft brush" by using the mouse wheel, which determines the area where the map will be edited.
-  \item Editing the map by clicking and dragging the ``soft brush.''
+  \item After selecting one or more than one layers under ``edit'' mode, the user can change the size of the "warp tool" by using the mouse wheel, which determines the area where the map will be edited.
+  \item Editing the map by clicking and dragging the ``warp tool.''
   \item The districts and buildings are procedurally generated.
   \item Allowing to change the type of the current district by right-clicking and selecting a new type from the context menu.
   \item The map provides 13 different types of districts: rich, medium, poor, empty, plaza, park, farm, water, harbor, university, religious, castle, and military.
