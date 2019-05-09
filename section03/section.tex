@@ -55,7 +55,17 @@ Like any other architectural styles, REST has its own 6 guiding constraints, whi
   \item Code on demand (optional). REST allows client functionality to be extended by downloading and executing code in the form of applets or scripts.
 \end{enumerate}
 
-Based on these principles, we have designed the APIs shown in Table \ref{tab:REST API Design Table}.
+Based on these principles, our APIs have the following features:
+
+\begin{enumerate}
+  \item Use plural nouns and not verbs
+  \item GET method and its query parameters do not alter the state
+  \item Use sub-resources for relations
+  \item Handle errors with HTTP status codes
+  \item Provide pagination, sorting, and filtering
+\end{enumerate}
+
+And we have designed these APIs, which shown in Table \ref{tab:REST API Design Table}.
 \begin{table}[!htb]
   \centering
   \begin{tabularx}{\textwidth}{>{\raggedright}cXX}
@@ -103,7 +113,9 @@ Based on these principles, we have designed the APIs shown in Table \ref{tab:RES
 \label{sec:Design>Map Generator Design>Canvas and SVG}
 Since the project is a web application, the map generator must be able to run on the web page. We need to choose a 2D HTML Graphics Tool to render it, such as Canvas or SVG.
 
-SVG is a language for describing 2D graphics in XML, which means every element is available within the SVG DOM, you can attach JavaScript event handlers for an element. In SVG, each drawn shape is remembered as an object. If attributes of an SVG object are changed, the browser can automatically re-render the shape. Canvas draws 2D graphics, on the fly (with JavaScript) by rendering pixel by pixel. In canvas, once the graphics are drawn, it is forgotten by the browser. If its position should be changed, the entire scene needs to be redrawn, including any objects that might have been covered by the graphics. We chose Canvas not only because there are always many elements in a map, but also there are many third-party JavaScript graphics libraries that can provide support.
+SVG is a language for describing 2D graphics in XML, which means every element is available within the SVG DOM, you can attach JavaScript event handlers for an element. In SVG, each drawn shape is remembered as an object. If attributes of an SVG object are changed, the browser can automatically re-render the shape. Canvas draws 2D graphics, on the fly (with JavaScript) by rendering pixel by pixel. In Canvas, once the graphics are drawn, it is forgotten by the browser. If its position should be changed, the entire scene needs to be redrawn, including any objects that might have been covered by the graphics.
+
+Because the map generator allows the user to annotate and edit the map, every time the user edits the map, the map will be redrawn, which contains thousands of objects, so we chose Canvas. By the way, SVG renders slowly if there are plenty of complex objects (anything that uses the DOM a lot will be slow).
 
 \subsubsection{Graphics Libraries}
 \label{sec:Design>Map Generator Design>Graphics Libraries}

@@ -24,20 +24,21 @@
 \contentsline {subsection}{\numberline {3.3.}REST API Design}{12}{subsection.0.3.3}
 \contentsline {subsection}{\numberline {3.4.}Map Generator Design}{13}{subsection.0.3.4}
 \contentsline {subsubsection}{\numberline {3.4.1.}Canvas and SVG}{13}{subsubsection.0.3.4.1}
-\contentsline {subsubsection}{\numberline {3.4.2.}Graphics Libraries}{13}{subsubsection.0.3.4.2}
-\contentsline {subsubsection}{\numberline {3.4.3.}Height Map}{14}{subsubsection.0.3.4.3}
+\contentsline {subsubsection}{\numberline {3.4.2.}Graphics Libraries}{14}{subsubsection.0.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.3.}Height Map}{15}{subsubsection.0.3.4.3}
 \contentsline {section}{\numberline {4.}Implementation}{17}{section.0.4}
 \contentsline {subsection}{\numberline {4.1.}Frontend}{17}{subsection.0.4.1}
-\contentsline {subsection}{\numberline {4.2.}Backend}{20}{subsection.0.4.2}
-\contentsline {subsection}{\numberline {4.3.}Map Generator}{21}{subsection.0.4.3}
-\contentsline {subsubsection}{\numberline {4.3.1.}Polygons}{21}{subsubsection.0.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2.}Elevation}{21}{subsubsection.0.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.3.}Contour Lines}{22}{subsubsection.0.4.3.3}
-\contentsline {subsubsection}{\numberline {4.3.4.}Soft Brush}{24}{subsubsection.0.4.3.4}
-\contentsline {subsubsection}{\numberline {4.3.5.}Layers}{24}{subsubsection.0.4.3.5}
-\contentsline {subsubsection}{\numberline {4.3.6.}City Wall}{25}{subsubsection.0.4.3.6}
-\contentsline {subsubsection}{\numberline {4.3.7.}Types}{25}{subsubsection.0.4.3.7}
-\contentsline {subsubsection}{\numberline {4.3.8.}Buildings}{27}{subsubsection.0.4.3.8}
-\contentsline {subsubsection}{\numberline {4.3.9.}Streets}{28}{subsubsection.0.4.3.9}
-\contentsline {section}{\numberline {5.}References}{30}{section.0.5}
-\contentsline {section}{\numberline {6.}Appendices}{31}{section.0.6}
+\contentsline {subsection}{\numberline {4.2.}Backend}{19}{subsection.0.4.2}
+\contentsline {subsection}{\numberline {4.3.}Map Generator}{20}{subsection.0.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1.}Overview}{20}{subsubsection.0.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2.}Polygons}{20}{subsubsection.0.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3.}Elevation}{21}{subsubsection.0.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.4.}Contour Lines}{21}{subsubsection.0.4.3.4}
+\contentsline {subsubsection}{\numberline {4.3.5.}Warp Tool}{23}{subsubsection.0.4.3.5}
+\contentsline {subsubsection}{\numberline {4.3.6.}Layers}{23}{subsubsection.0.4.3.6}
+\contentsline {subsubsection}{\numberline {4.3.7.}City Wall}{24}{subsubsection.0.4.3.7}
+\contentsline {subsubsection}{\numberline {4.3.8.}Types}{24}{subsubsection.0.4.3.8}
+\contentsline {subsubsection}{\numberline {4.3.9.}Buildings}{26}{subsubsection.0.4.3.9}
+\contentsline {subsubsection}{\numberline {4.3.10.}Streets}{27}{subsubsection.0.4.3.10}
+\contentsline {section}{\numberline {5.}References}{29}{section.0.5}
+\contentsline {section}{\numberline {6.}Appendices}{30}{section.0.6}

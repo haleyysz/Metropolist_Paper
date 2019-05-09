@@ -10,18 +10,22 @@ In our design, the user must register to log in before he can use the applicatio
 \begin{enumerate}
   \item The ``Sign Up'' form requires the user to enter a unique and valid email, first name, last name, password, and confirmed password. The user can click the icon on the right of the password input to make his password visible or invisible. Also, the ``clear'' button on the left bottom corner is used to clear all inputs of the ``Sign Up'' form. The user can also click the ``Log in instead'' button to be redirected to the ``Log In'' page if he already has an account. Figure \ref{fig:GUI signup} is the interface of the ``Sign Up'' page.
 
-  \begin{figure}[htbp]
-    \includegraphics[width=\textwidth]{section04/assets/GUI-signup.png}
-    \caption{Signup page}
-    \label{fig:GUI signup}
-  \end{figure}
-
   \item The ``Log In'' form requires the user to enter the email and the password. Also, the user can access the ``Sign Up'' page via the ``Create account'' button on the bottom. Figure \ref{fig:GUI login} is the interface of the ``Log In'' page.
 
-  \begin{figure}[htbp]
-    \includegraphics[width=\textwidth]{section04/assets/GUI-login.png}
+  \begin{figure}
+  \centering
+  \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{section04/assets/GUI-signup-small.png}
+    \caption{Signup page}
+    \label{fig:GUI signup}
+  \end{minipage}%
+  \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{section04/assets/GUI-login-small.png}
     \caption{Login page}
     \label{fig:GUI login}
+  \end{minipage}
   \end{figure}
 
   \item The ``Community'' page shows all the maps that can be viewed, which are marked by their own owners as ``isVisible.'' Besides, the user can filter maps using map name, owner's email, owner's first name, or owner's last name via the ``Filter'' on the left top corner. Figure \ref{fig:GUI community} is the interface of the ``Community'' page.
@@ -56,26 +60,35 @@ The backend consists of the server, database, and APIs. The server running on th
 To connect MongoDB to our Express application, we had to use an ORM to convert information from the database to a JavaScript application without SQL statements. ORM is short for Object Related Mapping, a technique that can be used to convert data among incompatible types. More specifically, ORMs mimic the actual database so we can operate within a programming language (e.g. JavaScript) without using a database query language (e.g. SQL) to interact with the database. For this application, we used Mongoose as the ORM, which is an object document modeling (ODM) layer that sits on top of the Node.js's MongoDB driver.
 
 \subsection{Map Generator}
-% Voronoi -> Lloyd's Relaxation -> D3 mouse events -> Layers: elevation, affluence,
+
+\subsubsection{Overview}
+
+
 \subsubsection{Polygons}
 The first step is to render some polygons (cells). As we mentioned before in the design phase, we used the d3.voronoi library to implement Steven J. Fortune’s algorithm for computing the Voronoi diagram or Delaunay triangulation of a set of two-dimensional points. Figure \ref{fig:Voronoi polygons} is an example of 100 dots (red) and corresponding 100 polygons:
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{section04/assets/Map-voronoi.png}
-\caption[Voronoi polygons]{\label{fig:Voronoi polygons}Voronoi polygons}
-\end{figure}
-
 As we can see these random points' tessellation is a little bit irregular, we wanted something closer to semi-randomness or quasi-randomness, not completely random points. So we approximated that by using a variant of Lloyd relaxation, also known as Voronoi iteration or relaxation, which is a fairly simple tweak to the random point locations to make them more evenly distributed. Lloyd relaxation replaces each point by the centroid of the polygon. The more iterations, the more regular the polygons get. Figure \ref{fig:Voronoi relaxed polygons} is the result after running approximate Lloyd relaxation 5 times:
 
-\begin{figure}[htbp]
-  \includegraphics[width=\textwidth]{section04/assets/Map-voronoi-relaxation.png}
-  \caption{Voronoi polygons after 5 times of relaxation}
-  \label{fig:Voronoi relaxed polygons}
+\begin{figure}
+\centering
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=.99\textwidth]{section04/assets/Map-voronoi.png}
+    \caption{Before relaxation}
+    \label{fig:Voronoi polygons}
+  \end{subfigure}%
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=.99\textwidth]{section04/assets/Map-voronoi-relaxation.png}
+    \caption{After 5 times of relaxation}
+    \label{fig:Voronoi relaxed polygons}
+  \end{subfigure}
+  \caption{Voronoi polygons before relaxation and after relaxation}
+  \label{fig:Voronoi polygons before relaxation and after relaxation}
 \end{figure}
 
 \subsubsection{Elevation}
-As we mentioned in the map generator design phase, the map should be a height map, so we introduced the concept of ``elevation''. We called these dots that generate polygons as sites, and each site corresponds to a polygon. Then we derived the sites object from the d3.voronoi object, and assigned the ``elevation'' property to it, whose value from 0 to 1. Before making the height map, we defined the waterline, which is also from 0 to 1. If the value of elevation is greater than the waterline, the polygon represented by the site is the continent. Otherwise, it is water. Also, the darker the polygon is, the higher the elevation it represents. As the waterline rises, the continents with lower altitudes would be flooded and become water. So in the beginning, we set all the polygons to be continents and have an initial elevation that is 0.35. If the user wants to create water, then he should manually edit them. Figure \ref{fig:Height Map} is an example that divides the world into the continent and water:
+As we mentioned in the map generator design phase, the map should be a height map, so we introduced the concept of ``elevation''. We called these dots that generate polygons as sites, and each site corresponds to a polygon. Then we derived the sites object from the d3.voronoi object, and assigned the ``elevation'' property to it, whose value is normalized to the range 0..1. Before making the height map, we defined the waterline, whose value is also normalized to the range 0..1. If the value of elevation is greater than the waterline, the polygon represented by the site is the continent. Otherwise, it is water. Also, the darker the polygon is, the higher the elevation it represents. As the waterline rises, the continents with lower altitudes would be flooded and become water. So in the beginning, we set all the polygons to be continents and have an initial elevation that is 0.35. If the user wants to create water, then he should manually edit them. Figure \ref{fig:Height Map} is an example that divides the world into the continent and water:
 
 \begin{figure}[htbp]
   \includegraphics[width=\textwidth]{section04/assets/Map-heightmap.png}
@@ -94,7 +107,7 @@ These triangles link to every site, and each site has an ``elevation'' attribute
 \begin{algorithmic}
 \REQUIRE $X \geq 0 \wedge X \leq 1$
 \FOR{every triangle $T$}
-\FOR{every edge $E1$, $E2$ in $T$}
+\FOR{every edge $E1 $, $E2$ in $T$}
 \IF{$X \in$ [E1, E2]}
 \STATE Draw a line from $E1$ to $E2$
 \ENDIF
