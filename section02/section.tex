@@ -3,13 +3,11 @@
 
 \subsection{Overview}
 \label{sec:Requirements>Overview}
-Initially, this project was conceived by Dr. Kenny Hunt, who served as the advisor, and he gave almost all of the requirements in an introductory meeting. Both the advisor, who is also the project sponsor, and the developer, who is also the author, are the stakeholders of the project.
-
-After that, the advisor met with the developer every week to gather informal functional requirements of this project, and he would also refine any previous requirements that were given. These requirements played a crucial role in the development of the map generator. On the one hand, the scope of development was clarified, and on the other hand, the necessary algorithms were compiled to maintain the continuation of development.
+Initially, this project was conceived by Dr. Kenny Hunt, who served as the advisor, and he gave almost all of the requirements \cite{web:Metropolist} in the first meeting. Both the advisor, who is also the project sponsor, and the developer, who is also the author, are the stakeholders of the project.
 
 \subsection{Functional Requirements}
 \label{sec:Requirements>Functional Requirements}
-There are two roles for this system: ``admins'' and ``users''. As a result, the following functional requirements were established for the project:
+There are two roles for this system: ``admins'' and ``users.'' As a result, the following functional requirements were established for the project:
 \begin{enumerate}
   \item As an admin or a user, I need to able to:
   \begin{enumerate}
@@ -47,20 +45,18 @@ Figure \ref{fig:Use Case Diagram} is the Use Case Diagram that describes the fun
 
 \subsection{Non-Functional Requirements}
 \label{sec:Requirements>Non-Functional Requirements}
-There are numerous non-functional requirements for this system: response time, availability, usability, security (authentication, authorization, integrity, privacy, etc.), and so on. For this application, we focused on the following requirements:
+There are numerous non-functional requirements for this system: response time, availability, usability, security (authentication, authorization, integrity, privacy, etc.), and so on \cite{web:NonFunc}. For this application, we focused on the following requirements:
 \begin{enumerate}
   \item Security:
   \begin{enumerate}
     \item Input Validation:
     \begin{enumerate}
-      \item Add validations at both client and server sides
-      \item All methods should always validate all parameters in the server-side
+      \item All user supplied data is validated at both client and server
     \end{enumerate}
     \item Password Encryption:
     \begin{enumerate}
-      \item Shall always be encrypted
+      \item Password must be encrypted
       \item Not even the system administrators shall see clear text passwords
-      \item Applying a hashing algorithm to passwords
     \end{enumerate}
     \item Prohibiting Cross Site Scripting (XSS):
     \begin{enumerate}
@@ -73,8 +69,8 @@ There are numerous non-functional requirements for this system: response time, a
     \end{enumerate}
     \item Secure Session Cookie:
     \begin{enumerate}
-      \item Set the ``Secure'' cookie attribute and instruct web browsers to send the cookie only over encrypted, e.g., HTTPS, links.
-      \item Set the ``HttpOnly'' attribute true and prohibiting the JavaScript code from reading the cookie via the DOM ``document.cookie'' JavaScript object.
+      \item Only use secure cookies
+      \item Only use ``HttpOnly'' cookies
       \item Always change the session id after login
     \end{enumerate}
   \end{enumerate}
@@ -82,7 +78,7 @@ There are numerous non-functional requirements for this system: response time, a
   \begin{enumerate}
     \item High performance of rendering map:
     \begin{enumerate}
-      \item Compare and select the most appropriate and the fastest way to render maps, e.g., canvas, SVG
+      \item The map rendering engine must be fast enough to support a viable user experience
     \end{enumerate}
   \end{enumerate}
 \end{enumerate}
@@ -91,7 +87,7 @@ There are numerous non-functional requirements for this system: response time, a
 \label{sec:Requirements>SDLC}
 We analyzed and summarized the following possible risks:
 \begin{enumerate}
-  \item Lack of experience developing Semi-Automatic map generation algorithms
+  \item Lack of experience developing semi-automatic map generation algorithms
   \item Uncertainty regarding third-party libraries that would provide assistance
   \item Potential misunderstanding between the advisor and the developer with respect to the requirements
 \end{enumerate}
@@ -101,7 +97,7 @@ To reduce or avoid these risks, two life cycle models were considered: Waterfall
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{section02/assets/Agile.png}
-\caption[Agile Development Life Cycle Model]{\label{fig:Agile Model}Agile Development Life Cycle Model}
+\caption[Agile Development Life Cycle Model]{\label{fig:Agile Model}Agile Development Life Cycle Model \cite{web:AgileModel}}
 \end{figure}
 
 An Agile methodology is a practice that helps continuous iterations of development and testing in the software development process. In this model, development and testing activities are concurrent. Furthermore, the Agile model is a combination of iterative and incremental process models, which breaks the product into small incremental builds. These builds are provided in iterations. Each iteration typically lasts from about one to three weeks.

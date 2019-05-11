@@ -2,7 +2,7 @@
 \label{sec:Implementation}
 
 \subsection{Frontend}
-There are many mature SPA frameworks today, such as Vue.js, ReactJS, Angular.js, Angular, and so on. Since the author is familiar with Angular, the frontend part of the project is implemented using Angular, which comes with almost everything we need, from powerful templates to fast rendering, data management, HTTP services, form handling, and so much more. Moreover, Angular provides a UI component library called Angular Material,
+There are many mature SPA frameworks today, such as Vue.js, ReactJS, Angular.js, Angular, and so on. Since the developer is familiar with Angular, the frontend part of the project is implemented using Angular, which comes with almost everything we need, from powerful templates to fast rendering, data management, HTTP services, form handling, and so much more. Moreover, Angular provides a UI component library called Angular Material,
 which is inspired by Google Material Design. Angular Material components help in constructing attractive, consistent, and functional web pages and web applications while adhering to modern web design principles like browser portability, device independence, and graceful degradation. It helps in creating faster, beautiful, and responsive websites.
 
 In our design, the user must register to log in before he can use the application, so the home page is the login page. Luckily, Angular provides multiple routing guards, and the CanActivate interface is a good way for us to implement our own authentication routing. In addition, as we mentioned in Section \ref{sec:Requirements>Non-Functional Requirements} Non-Functional Requirements, every form must be validated by the client side before being submitted to the server side. The Implementation of GUI is listed below:
@@ -14,19 +14,37 @@ In our design, the user must register to log in before he can use the applicatio
 
   \begin{figure}
   \centering
-  \begin{minipage}{.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{section04/assets/GUI-signup-small.png}
-    \caption{Signup page}
-    \label{fig:GUI signup}
-  \end{minipage}%
-  \begin{minipage}{.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{section04/assets/GUI-login-small.png}
-    \caption{Login page}
-    \label{fig:GUI login}
-  \end{minipage}
+    \begin{subfigure}{.5\textwidth}
+      \centering
+      \includegraphics[width=.99\textwidth]{section04/assets/GUI-login-small.png}
+      \caption{Login page}
+      \label{fig:GUI login}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+      \centering
+      \includegraphics[width=.99\textwidth]{section04/assets/GUI-signup-small.png}
+      \caption{Signup page}
+      \label{fig:GUI signup}
+    \end{subfigure}
+    \caption{Login and Signup pages}
+    \label{fig:Login and Signup pages}
   \end{figure}
+
+  % \begin{figure}
+  % \centering
+  % \begin{minipage}{.5\textwidth}
+  %   \centering
+  %   \includegraphics[width=\textwidth]{section04/assets/GUI-signup-small.png}
+  %   \caption{Signup page}
+  %   \label{fig:GUI signup}
+  % \end{minipage}%
+  % \begin{minipage}{.5\textwidth}
+  %   \centering
+  %   \includegraphics[width=\textwidth]{section04/assets/GUI-login-small.png}
+  %   \caption{Login page}
+  %   \label{fig:GUI login}
+  % \end{minipage}
+  % \end{figure}
 
   \item The ``Community'' page shows all the maps that can be viewed, which are marked by their own owners as ``isVisible.'' Besides, the user can filter maps using map name, owner's email, owner's first name, or owner's last name via the ``Filter'' on the left top corner. Figure \ref{fig:GUI community} is the interface of the ``Community'' page.
 
@@ -55,19 +73,16 @@ In our design, the user must register to log in before he can use the applicatio
 \end{enumerate}
 
 \subsection{Backend}
-The backend consists of the server, database, and APIs. The server running on the author's computer, the database is powered by MongoDB, and the APIs are RESTful. On this basis, we chose Express.js because it is a lightweight Node.js framework, which allows us to define routes of our application based on HTTP methods and URLs so that we can easily apply the REST API design to them very well. Also, it includes various middleware modules that we can use to perform additional tasks on the request and response.
+The backend consists of the server, database, and APIs. The server running on the developer's computer, the database is powered by MongoDB, and the APIs are RESTful. On this basis, we chose Express.js because it is a lightweight Node.js framework, which allows us to define routes of our application based on HTTP methods and URLs so that we can easily apply the REST API design to them very well. Also, it includes various middleware modules that we can use to perform additional tasks on the request and response.
 
 To connect MongoDB to our Express application, we had to use an ORM to convert information from the database to a JavaScript application without SQL statements. ORM is short for Object Related Mapping, a technique that can be used to convert data among incompatible types. More specifically, ORMs mimic the actual database so we can operate within a programming language (e.g. JavaScript) without using a database query language (e.g. SQL) to interact with the database. For this application, we used Mongoose as the ORM, which is an object document modeling (ODM) layer that sits on top of the Node.js's MongoDB driver.
 
 \subsection{Map Generator}
 
-\subsubsection{Overview}
-
-
 \subsubsection{Polygons}
-The first step is to render some polygons (cells). As we mentioned before in the design phase, we used the d3.voronoi library to implement Steven J. Fortune’s algorithm for computing the Voronoi diagram or Delaunay triangulation of a set of two-dimensional points. Figure \ref{fig:Voronoi polygons} is an example of 100 dots (red) and corresponding 100 polygons:
+The first step is to render some polygons (cells). As we mentioned before in the design phase, we used the d3.voronoi library to implement Steven J. Fortune’s algorithm for computing the Voronoi diagram or Delaunay triangulation of a set of two-dimensional points. Figure \ref{fig:Voronoi polygons} is an example of 100 dots and corresponding 100 polygons:
 
-As we can see these random points' tessellation is a little bit irregular, we wanted something closer to semi-randomness or quasi-randomness, not completely random points. So we approximated that by using a variant of Lloyd relaxation, also known as Voronoi iteration or relaxation, which is a fairly simple tweak to the random point locations to make them more evenly distributed. Lloyd relaxation replaces each point by the centroid of the polygon. The more iterations, the more regular the polygons get. Figure \ref{fig:Voronoi relaxed polygons} is the result after running approximate Lloyd relaxation 5 times:
+As we can see the tessellation of these random points is irregular. In the sense that ratio between the largest and smallest region is large, we wanted to get more even points. So we approximated that by using a variant of Lloyd relaxation, also known as Voronoi iteration or relaxation, which has the effect of making the polygons evenly distributed. Lloyd relaxation replaces each point by the centroid of the polygon. The more iterations, the more regular the polygons get. Figure \ref{fig:Voronoi relaxed polygons} is the result after running approximate Lloyd relaxation 5 times:
 
 \begin{figure}
 \centering
@@ -88,7 +103,7 @@ As we can see these random points' tessellation is a little bit irregular, we wa
 \end{figure}
 
 \subsubsection{Elevation}
-As we mentioned in the map generator design phase, the map should be a height map, so we introduced the concept of ``elevation''. We called these dots that generate polygons as sites, and each site corresponds to a polygon. Then we derived the sites object from the d3.voronoi object, and assigned the ``elevation'' property to it, whose value is normalized to the range 0..1. Before making the height map, we defined the waterline, whose value is also normalized to the range 0..1. If the value of elevation is greater than the waterline, the polygon represented by the site is the continent. Otherwise, it is water. Also, the darker the polygon is, the higher the elevation it represents. As the waterline rises, the continents with lower altitudes would be flooded and become water. So in the beginning, we set all the polygons to be continents and have an initial elevation that is 0.35. If the user wants to create water, then he should manually edit them. Figure \ref{fig:Height Map} is an example that divides the world into the continent and water:
+As we mentioned in the map generator design phase, the map should be a height map, so we introduced the concept of ``elevation.'' We called these dots that generate polygons as sites, and each site corresponds to a polygon. Then we derived the sites object from the d3.voronoi object, and assigned the ``elevation'' property to it, whose value is normalized to the range 0..1. Before making the height map, we defined the waterline, whose value is also normalized to the range 0..1. If the value of elevation is greater than the waterline, the polygon represented by the site is the continent. Otherwise, it is water. Also, the darker the polygon is, the higher the elevation it represents. As the waterline rises, the continents with lower altitudes would be flooded and become water. So in the beginning, we set all the polygons to be continents and have an initial elevation that is 0.35. If the user wants to create water, then he should manually edit them. Figure \ref{fig:Height Map} is an example that divides the world into the continent and water:
 
 \begin{figure}[htbp]
   \includegraphics[width=\textwidth]{section04/assets/Map-heightmap.png}
@@ -97,7 +112,13 @@ As we mentioned in the map generator design phase, the map should be a height ma
 \end{figure}
 
 \subsubsection{Contour Lines}
-We calculated the contour lines of the map, which are determined by the elevation of each polygon. The calculation is based on the Delaunay triangle, which is related to the Voronoi diagram. Every triangle in the Delaunay triangulation corresponds to a polygon corner in the Voronoi diagram. Every polygon in the Voronoi diagram corresponds to a corner of a Delaunay triangle. Every edge in the Delaunay graph corresponds to an edge in the Voronoi graph. We got these triangles directly from d3.voronoi.triangles().
+We calculated the contour lines of the map, which are determined by the elevation of each polygon. The calculation is based on the Delaunay triangulation, which is related to the Voronoi diagram. Every triangle in the Delaunay triangulation corresponds to a polygon corner in the Voronoi diagram. Every polygon in the Voronoi diagram corresponds to a corner of a Delaunay triangle. Every edge in the Delaunay graph corresponds to an edge in the Voronoi graph. We got these triangles directly from d3.voronoi.triangles(). Figure \ref{fig:Delaunay triangulation} is the Delaunay triangulation graph based on the Voronoi diagram after relaxation.
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth]{section04/assets/Map-delaunay-triangulation.png}
+  \caption{Delaunay triangulation}
+  \label{fig:Delaunay triangulation}
+\end{figure}
 
 These triangles link to every site, and each site has an ``elevation'' attribute. We set an elevation value between 0 and 1, and then looped every edge of every Delaunay triangle. If this value is between the elevation values of the two sites to which it is connected, we marked the point represented by this value and then connected all such points. Algorithm \ref{alg:draw contourline} describes the idea.
 
@@ -107,16 +128,16 @@ These triangles link to every site, and each site has an ``elevation'' attribute
 \begin{algorithmic}
 \REQUIRE $X \geq 0 \wedge X \leq 1$
 \FOR{every triangle $T$}
-\FOR{every edge $E1 $, $E2$ in $T$}
-\IF{$X \in$ [E1, E2]}
-\STATE Draw a line from $E1$ to $E2$
+\FOR{every edge $E_1$, $E_2$ in $T$}
+\IF{$X \geq \mathbf{elevation}(E_1) \&\& X \leq \mathbf{elevation}(E_2)$}
+\STATE Draw a line from $E_1$ to $E_2$
 \ENDIF
 \ENDFOR
 \ENDFOR
 \end{algorithmic}
 \end{algorithm}
 
-We expected the user can edit the terrain by contour lines by the tools we provided. Figure \ref{fig:contour line} gives an example that draws four contour lines based on the value of waterline (blue) and several elevation values: 0.25 (red), 0.5 (green), and 0.75 (yellow).
+We expected the user to edit the terrain contour lines by using the tools we provided. Figure \ref{fig:contour line} gives an example that draws four contour lines based on the value of waterline (blue) and several elevation values: 0.25 (red), 0.5 (green), and 0.75 (yellow).
 
 \begin{figure}[htbp]
   \includegraphics[width=\textwidth]{section04/assets/Map-contourline.png}
@@ -127,36 +148,26 @@ We expected the user can edit the terrain by contour lines by the tools we provi
 \subsubsection{Warp Tool}
 As mentioned in the previous section, the user needs to edit the map manually. So we provided some methods of operations, the most important of which is the warp tool. The warp tool is a circle that follows the mouse movement, and its role is to change the specific attribute values of all sites in the range.
 
-In terms of elevation, the user can click and drag the warp tool to change the elevation of the selected sites accordingly. Generally speaking, the longer the distance is dragged, The more values are changed. The user first selects one of the two modes of ``increase'' or ``decrease''. Correspondingly, the attribute value of the site is increased or decreased under the operation of the warp tool. And the size of the warp tool can be enlarged or reduced by the mouse wheel.
+In terms of elevation, we assigned a property called ``delta'' for each site object, which is the factor that determines the elevation. The user can click and drag the warp tool to change the elevation of the selected sites accordingly. In general, the longer the distance is dragged, The more values are changed. The value of elevation is the product of the delta and the increment value manually set by the user. Within the radius of the warp tool, the elevation value of sites in the center position changes more than the edge position.
+
+The user first selects one of the two modes of ``increase'' or ``decrease.'' Correspondingly, the attribute value of the site is increased or decreased under the operation of the warp tool. Also, the size of the warp tool can be enlarged or reduced by the mouse wheel.
 
 \subsubsection{Layers}
-In our design, 5 different layers were applied to the map. Each layer comes with two modes, ``view'' and ``edit''. Once the user has checked the edit option of a layer, its view option would also be checked; once the view option of a layer is unchecked, its edit option would also be unchecked. We always keep at least one layer to ensure the normal display of the map if the user unchecked all of them.
+In our design, 5 different layers were applied to the map. Each layer comes with two modes, ``view'' and ``edit.'' Once the user has checked the edit option of a layer, its view option would also be checked; once the view option of a layer is unchecked, its edit option would also be unchecked. We always keep at least one layer viewable to ensure the normal display of the map if the user unchecks all of them. The user can view them by checking different layers, and layers can be superimposed on each other. For each polygon, we took the average of the sum of the currently selected layers of color values as its background color.
 
-Just like introducing the concept of elevation and assigning it to sites, we then introduced the concepts listed below (including elevation) and assigned them to sites:
-
-\begin{enumerate}
-  \item The elevation layer represents the altitude of the area. The elevation of all location in a polygon is considered the same.
-  \item The affluence layer represents the wealth of the district (polygon). The lower the value, the poorer the area, vice versa. It is usually used to classify residential areas.
-  \item The desirability layer represents the attraction of the region to people, from 0 to infinity. People generally prefer to live in places with higher desirability.
-  \item The district layer allows the user to assign types to districts. Correspondingly, different types of districts have different background colors. In addition, the user can use the warp tool to render the city wall under this layer.
-  \item The building layer displays buildings of various districts. These buildings are procedurally generated, so the user can change them by changing the type of the district.
-\end{enumerate}
-
-The user can view them by checking different layers, and layers can be superimposed on each other. For each polygon, we took the average of the sum of the currently selected layers of color values as its background color.
+Just like introducing the concept of elevation and assigning it to sites, we then assigned ``affluence'', ``desirability'', ``district'', ``buildings'' as attributes to each site.
 
 \subsubsection{City Wall}
-As a fantasy map of the medieval city, the city wall is always an essential element. Our map generator allows the user to create walls manually.
-
-The basic idea is to assign the ``wall'' attribute to each site and then give it an initial value with 0, which means there are no walls in this district. Another value is 1, representing there is the city wall in this district. The user increases or decreases the value of the wall by using the warp tool to render or erase the city wall. We used the d3.topojson library to merge all the districts with walls, which returned multiple merged polygons. Interior borders shared by adjacent polygons in merged polygons are removed, as we can see in Figure \ref{fig:city wall}.
+The basic idea is to assign the ``wall'' attribute to each site and then give it an initial value with 0, which means there are no walls in this district. Another value is 1, representing there is the city wall in this district. The user increases or decreases the value of the wall by using the warp tool to render or erase the city wall. We used the d3.topojson library to merge all the districts with walls, which returned multiple merged polygons. Interior borders shared by adjacent polygons in merged polygons are removed, as we can see in Figure \ref{fig:city wall and classification}.
 
 \begin{figure}[htbp]
   \includegraphics[width=\textwidth]{section04/assets/Map-wall.png}
-  \caption{A map with walls}
-  \label{fig:city wall}
+  \caption{A map with walls and classification}
+  \label{fig:city wall and classification}
 \end{figure}
 
 \subsubsection{Types}
-Based on the continent and water, we subdivided the districts (including water) into 13 types, and we assumed that the value of desirability determines most of them. The equation and the assignment conditions are listed below:
+As we mentioned in the design phase, the city map was subdivided into 13 types, and we assumed that the value of desirability determines most of them. The equation and the assignment conditions are listed below:
 
 \[ desirability = (elevation + affluence) / 2 \]
 
@@ -178,24 +189,17 @@ Based on the continent and water, we subdivided the districts (including water) 
 
 In our design, sites closest to the boundary can only be assigned as empty, farm, or water. Different types of districts are represented by different background colors.
 
-\subsubsection{Buildings}
-One of the most important parts is the generation of buildings, which is procedural.
-The main idea of creating buildings is the segmentation of polygons. Because the time to build the wheel was too long, we used a third-party library called poly-split-js written by Kladess. It implemented the polygon-splitting algorithm written by Sumit Khetarpal based on Dr. Rossignac's research. The algorithm splits polygons into any number of equal areas while ensuring the minimum length of line based cuts. It also works for both convex and concave polygons, as long as they do not have non-manifold vertices, and can be traversed with a single loop. In a nutshell, this algorithm is designed to divide a polygon into two by their area ratio. It receives two parameters: the vertex set of the polygon to be split and the area ratio of the polygons to be input. It returns the vertices sets Polygon1 and Polygon2 of the two split polygons, and a secant line called Cutline.
+\subsubsection{Blocks}
+One of the most important parts is the generation of buildings, which is procedural. Before generating the buildings, we first introduced the concept of a block. A district may have many blocks, and a block may contain many buildings.
 
-Before generating the buildings, we first introduced the concept of a block. A district may have many blocks, and a block may contain many buildings. We split all polygons except type water, then we got the preliminary version of the city map. Figure \ref{fig:city blocks} is an example of implementation.
+The main idea of creating buildings is polygon splitting. Because the time to build the wheel was too long, we used a third-party library called poly-split-js.js written by Kladess. It implemented the polygon-splitting algorithm written by Sumit Khetarpal based on Dr. Rossignac's research. The algorithm splits polygons into any number of equal areas while ensuring the minimum length of line based cuts. It also works for both convex and concave polygons, as long as they do not have non-manifold vertices, and can be traversed with a single loop. In a nutshell, this algorithm is designed to divide a polygon into two by their area ratio. It receives two parameters: the vertex set of the polygon to be split and the area ratio of the polygons to be input. It returns the vertices sets Polygon1 and Polygon2 of the two split polygons, and a secant line called Cutline.
+
+We split all polygons (except water, park, and castle) into blocks, those under to obtain the preliminary version of the city map. Figure \ref{fig:blocks} is an example of this technique.
 
 \begin{figure}[htbp]
-  \includegraphics[width=\textwidth]{section04/assets/Map-blocks.png}
+  \includegraphics[width=\textwidth]{section04/assets/Map-blocks-no-buildings.png}
   \caption{A city map with blocks}
-  \label{fig:city blocks}
-\end{figure}
-
-Then we split these blocks as before, and the small polygons returned this time are treated as buildings, which are located in blocks. Since the map would be filled with polygons in an instant, we designed such a mechanism, and the precondition is the map can be zoomed in or out normally. When the map is zoomed in to a certain extent, these buildings would be displayed. On the one hand, the map looks much better, and on the other hand, the rendering work of the browser has been lightened, and the performance of the generator is improved. Figure \ref{fig:buildings} is the implementation.
-
-\begin{figure}[htbp]
-  \includegraphics[width=\textwidth]{section04/assets/Map-buildings.png}
-  \caption{A city map with buildings}
-  \label{fig:buildings}
+  \label{fig:blocks}
 \end{figure}
 
 \subsubsection{Streets}
@@ -209,8 +213,42 @@ Essentially, each street has its own street name. First, we got a collection of 
 
 As the number of polygons increases, the street would increase, and street names would inevitably repeat. We hope to solve this problem in future work.
 
+% \begin{figure}
+% \centering
+%   \begin{subfigure}{.5\textwidth}
+%     \centering
+%     \includegraphics[width=.99\textwidth]{section04/assets/Map-blocks-no-buildings.png}
+%     \caption{blocks}
+%     \label{fig:blocks}
+%   \end{subfigure}%
+%   \begin{subfigure}{.5\textwidth}
+%     \centering
+%     \includegraphics[width=.99\textwidth]{section04/assets/Map-blocks-streets.png}
+%     \caption{blocks with streets}
+%     \label{fig:streets}
+%   \end{subfigure}
+%   \caption{Voronoi polygons before relaxation and after relaxation}
+%   \label{fig:A city map with blocks and streets}
+% \end{figure}
+
 \begin{figure}[htbp]
-  \includegraphics[width=\textwidth]{section04/assets/Map-streets.png}
+  \includegraphics[width=\textwidth]{section04/assets/Map-blocks-streets.png}
   \caption{A city map with streets}
   \label{fig:streets}
+\end{figure}
+
+\subsubsection{Buildings and Details}
+After getting blocks, we split them again as before. The small polygons returned this time are treated as buildings, which are located in blocks. We have previously defined several types of districts, some of which do not need to be split, for example: water, castle, and park. Some of them require unique segmentation methods, such as the farm.
+
+For the farm, it only needs to be split 2 or 3 times, unlike other ones that have been split a dozen times. These split larger polygons are pieces of the farm, we randomly made some diagonal lines to be treated as fields, and then changed the background color to the wheat color that echoes the farm. With the field, of course, the farmer’s house is indispensable. When we divide the buildings, we only need to keep a small polygon as a house. And not every farm needs a house, so we reduce the probability of splitting farms, let it occasionally do a building-level segmentation.
+
+Besides, for the type harbor, we got the inspiration from the Medieval Fantasy City Generator and introduced the concept of deck, which is randomly generated and of moderate length. Figure \ref{fig:buildings} is the implementation of buildings and details.
+
+Since the map would be filled with polygons in an instant, we designed such a mechanism, and the precondition is the map can be zoomed in or out normally: when the map is zoomed in to a certain extent, these buildings would be displayed. For example, when the map is enlarged to 2 times, the street names will be automatically displayed, when it is enlarged to 3 times, all the buildings will be rendered. On the one hand, the map looks much better, and on the other hand, the rendering work of the browser has been lightened, and the performance of the generator is improved.
+
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth]{section04/assets/Map-details.png}
+  \caption{A city map with buildings and details}
+  \label{fig:buildings}
 \end{figure}

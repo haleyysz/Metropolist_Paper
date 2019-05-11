@@ -1,8 +1,39 @@
 \begin{thebibliography}{1}
 
-\bibitem{Fielding00architecturalstyles}
+\bibitem{paper:Fielding00architecturalstyles}
 Roy~Thomas Fielding.
 \newblock Architectural styles and the design of network-based software
   architectures, 2000.
+
+\bibitem{web:Metropolist}
+Kenny Hunt.
+\newblock {Metropolist}.
+\newblock
+  \url{https://charity.cs.uwlax.edu/projects/metropolist/metropolist.html},
+  2018.
+\newblock [Online].
+
+\bibitem{web:NonFunc}
+Leif Lindbäck.
+\newblock {Introduction to Non-Functional Requirements on a Web Application -
+  Internet Applications, ID1354}.
+\newblock
+  \url{https://www.kth.se/social/files/54351342f276543b77c90951/non-func.pdf}.
+\newblock [Online].
+
+\bibitem{web:AgileModel}
+Victor Osetskyi.
+\newblock {SDLC Models Explained: Agile, Waterfall, V-Shaped, Iterative,
+  Spiral}.
+\newblock
+  \url{https://medium.com/existek/sdlc-models-explained-agile-waterfall-v-shaped-iterative-spiral-e3f012f390c5/},
+  2017.
+\newblock [Online; accessed 29-August-2017].
+
+\bibitem{web:RESTArchitecturalConstraints}
+RESTfulAPI.net.
+\newblock {REST Architectural Constraints}.
+\newblock \url{https://restfulapi.net/rest-architectural-constraints/}, 2018.
+\newblock [Online].
 
 \end{thebibliography}
