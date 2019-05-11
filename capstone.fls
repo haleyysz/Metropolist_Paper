@@ -202,6 +202,9 @@ INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 INPUT section04/section.tex
 INPUT section04/section.tex
 INPUT section04/section.tex
+INPUT section04/assets/Frontend.png
+INPUT ./section04/assets/Frontend.png
+INPUT ./section04/assets/Frontend.png
 INPUT section04/assets/GUI-login-small.png
 INPUT ./section04/assets/GUI-login-small.png
 INPUT ./section04/assets/GUI-login-small.png
@@ -217,6 +220,12 @@ INPUT ./section04/assets/GUI-user.png
 INPUT section04/assets/GUI-profile.png
 INPUT ./section04/assets/GUI-profile.png
 INPUT ./section04/assets/GUI-profile.png
+INPUT section04/assets/Backend.png
+INPUT ./section04/assets/Backend.png
+INPUT ./section04/assets/Backend.png
+INPUT section04/assets/Endpoints.png
+INPUT ./section04/assets/Endpoints.png
+INPUT ./section04/assets/Endpoints.png
 INPUT section04/assets/Map-voronoi.png
 INPUT ./section04/assets/Map-voronoi.png
 INPUT ./section04/assets/Map-voronoi.png
@@ -246,6 +255,9 @@ INPUT ./section04/assets/Map-blocks-streets.png
 INPUT section04/assets/Map-details.png
 INPUT ./section04/assets/Map-details.png
 INPUT ./section04/assets/Map-details.png
+INPUT section04/assets/Code-graph.png
+INPUT ./section04/assets/Code-graph.png
+INPUT ./section04/assets/Code-graph.png
 INPUT capstone.bbl
 INPUT capstone.bbl
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm

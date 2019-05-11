@@ -9,7 +9,7 @@ Because we selected the web application model from the beginning, the classic cl
 \label{sec:Design>Architecture Design>Web Browser or Client}
 The web browser or client is the interface rendition of a web app functionality, with which the user interacts. This content delivered to the client is developed using HTML, JavaScript, and CSS and does not require operating system related adaptations. In essence, the web browser or client manages how end users interact with the application.
 
-There are three, well-known Web Application Architecture types available in the modern landscape: Single Page Applications (SPA), Microservices, and Serverless Architectures. Because SPA provides a more responsive user experience and clean separation between data and views. Furthermore, our frontend and backend are developed separately. We chose the SPA structure.
+There are three, well-known Web Application Architecture types available in the modern landscape: Single Page Applications (SPA), Microservices, and Serverless Architectures. Because SPA provides more responsive user experience and clean separation between data and views. Furthermore, our frontend and backend are developed separately. We chose the SPA structure.
 
 The SPA model interacts with the user by providing updated content within the current page rather than loading entirely new pages from the server with each action from the user. It helps prevent interruptions in the user experience, transforming the behavior of the application such that it resembles a traditional desktop application.
 
@@ -27,7 +27,7 @@ Because the project involves a small number of entities, the relationships among
 
 \subsection{Database Design}
 \label{sec:Design>Database Design}
-NoSQL stands for "Not only SQL," which is an approach to database design that can accommodate a wide variety of data models, including key-value, document, columnar and graph formats. MongoDB is a type of NoSQL database. A record in MongoDB is a document, which is a data structure composed of field and value pairs. MongoDB documents are similar to JSON objects, because the values of fields may include other documents, arrays, and arrays of documents.
+NoSQL stands for ``Not only SQL," which is an approach to database design that can accommodate a wide variety of data models, including key-value, document, columnar and graph formats. MongoDB is a type of NoSQL database. A record in MongoDB is a document, which is a data structure composed of field and value pairs. MongoDB documents are similar to JSON objects, because the values of fields may include other documents, arrays, and arrays of documents.
 
 The system supports only two document types: the user and the map. A user can have many maps, but a map can only belong to one user. Thus, the relationship between the user and the map should be one-to-many.
 
@@ -116,17 +116,17 @@ There are many open source third-party graphics libraries on the web, such as D3
 \begin{enumerate}
   \item It is open source: so we can freely use the library, code and build our own maps.
   \item It has good and neat documentation of all the available functions and methods.
-  \item There is a gallery with unique charts which can be referred to while developing our project.
+  \item There is a gallery with unique charts that can be referred to while developing our project.
 \end{enumerate}
 
 \subsubsection{Map}
 \label{sec:Design>Map Generator Design>Map}
-Before we started to develop the map generator, we needed to understand what is a map and then decide what data structures and methods we are going to use to write. A map is a two-dimensional, abstract representation of the surface of the world. There are three main ways to generate a map: noise functions, random partitioning, or a hybrid of the two. Most procedural map generators use noise functions (midpoint displacement, fractal, diamond-square, Perlin noise, etc.) to generate a randomized map, but the results often look evenly artificial. So we decided to use random partitioning to model the mapping constraints. And we defined the following layers of the map, which can superimpose on each other:
+Before we started to develop the map generator, we needed to understand what is a map and then decide what data structures and methods we are going to use to write. A map is a two-dimensional, abstract representation of the surface of the world. There are three main ways to generate a map: noise functions, random partitioning, or a hybrid of the two. Most procedural map generators use noise functions (midpoint displacement, fractal, diamond-square, Perlin noise, etc.) to generate a randomized map, but the results often look evenly artificial. So we decided to use random partitioning to model the mapping constraints. And we defined the following layers of the map:
 
 \begin{enumerate}
   \item elevation: the elevation layer represents the altitude of the area. The elevation of all locations in a polygon is considered the same.
   \item affluence: the affluence layer represents the wealth of the district (polygon). The lower the value, the poorer the area, vice versa. It is usually used to classify residential areas.
-  \item desirability: the desirability layer represents the attraction of the region to people, from 0 to infinity， which determined by elevation and affluence. People generally prefer to live in places with higher desirability.
+  \item desirability: the desirability layer represents the attraction of the region to people, from 0 to infinity, which determined by elevation and affluence. People generally prefer to live in places with higher desirability.
   \item district: the district layer allows the user to assign types to districts. Correspondingly, different types of districts have different background colors. As a fantasy map of the medieval city, the city wall is always an essential element. Our map generator allows the user to create walls manually, so the user can use the warp tool to render the city wall under this layer.
   \item building: the building layer displays buildings of various districts. These buildings are procedurally generated, so the user can change them by changing the type of the district.
 \end{enumerate}
@@ -152,24 +152,19 @@ Based on these layers, we have expanded the districts. A city is always composed
 After introducing these types, we want this project to have the following main features:
 
 \begin{enumerate}
-  \item Once opening the map editor page, it will show an empty map with random district delaunay and shapes, then the user can start editing the map.
-  \item Entering the number of map seeds to create a new empty map in the menu or using the default seeds.
-  \item Viewing different types of layers for the map: elevation, affluence, desirability, district, and building, which can superimpose on each other.
-  \item Selecting different types of layers for the map: elevation, affluence, desirability, district, and building, which can superimpose on each other.
-  \item Displaying street names or not.
-  \item Manipulating the ``increase/decrease toggle'' to increase or decrease the value of elevation, affluence, and district.
-  \item Manipulating the ``increment sliding'' to set the size of the increment.
-  \item Manipulating the ``waterline sliding'' to make map cells as water or city.
-  \item If the waterline is changed, the continent will be changed accordingly.
-  \item Displaying contour lines or not.
-  \item After selecting one or more than one layers under ``edit'' mode, the user can change the size of the "warp tool" by using the mouse wheel, which determines the area where the map will be edited.
-  \item Editing the map by clicking and dragging the ``warp tool.''
+  \item Once opening the map editor page, it will show an empty map with random district placements and shapes, then the user can start editing the map.
+  \item Create a map by entering the resolution of the map in the menu.
+  \item View the different layers of the map, these layers can be superimposed on each other.
+  \item Edit the different layers of the map.
+  \item Toggle the display of street names.
+  \item Set the waterline or elevation level
+  \item Display contour lines or not.
+  \item After selecting one or more than one layer under ``edit'' mode, the user can change the size of the "warp tool" by using the mouse wheel, which determines the area where the map will be edited.
+  \item Edit the map by clicking and dragging the ``warp tool.''
   \item The districts and buildings are procedurally generated.
-  \item Allowing to change the type of the current district by right-clicking and selecting a new type from the context menu.
-  \item The map provides 13 different types of districts: rich, medium, poor, empty, plaza, park, farm, water, harbor, university, religious, castle, and military.
-  \item Zooming in and zooming out the map by pressing on the alt key and using the mouse wheel.
-  \item Using a specialized button to resize the map on the right top.
-  \item Saving the map or downloading it by clicking the button on the right bottom.
+  \item Allow to change the type of the current district by right-clicking and selecting a new type from the context menu.
+  \item Zoom in and zoom out the map by pressing on the alt key and using the mouse wheel.
+  \item Use a specialized button to resize the map on the menu.
+  \item Save the map.
+  \item Download the map.
 \end{enumerate}
-
-All these are based on the Voronoi diagram. Thankfully, generating Voronoi diagrams in JavaScript is easy to be implemented if we use d3.voronoi of Fortune’s algorithm by Mike Bostock.

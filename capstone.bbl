@@ -13,6 +13,18 @@ Kenny Hunt.
   2018.
 \newblock [Online].
 
+\bibitem{web:polygon-splitting}
+Sumit Khetarpal.
+\newblock {Dividing A Polygon In Any Given Number Of Equal Areas}.
+\newblock \url{http://www.khetarpal.org/polygon-splitting/}, 2014.
+\newblock [Online; accessed 24-December-2014].
+
+\bibitem{web:poly-split-js}
+Kladess.
+\newblock {poly-split-js}.
+\newblock \url{https://github.com/kladess/poly-split-js}, 2016.
+\newblock [Online; accessed 1-January-2018].
+
 \bibitem{web:NonFunc}
 Leif Lindbäck.
 \newblock {Introduction to Non-Functional Requirements on a Web Application -
