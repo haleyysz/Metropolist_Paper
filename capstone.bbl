@@ -1,4 +1,10 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{web:D3-force}
+Mike Bostock.
+\newblock {Force-directed graph layout using velocity Verlet integration}.
+\newblock \url{https://github.com/d3/d3-force}, 2016.
+\newblock [Online].
 
 \bibitem{paper:Fielding00architecturalstyles}
 Roy~Thomas Fielding.
@@ -13,17 +19,17 @@ Kenny Hunt.
   2018.
 \newblock [Online].
 
-\bibitem{web:polygon-splitting}
+\bibitem{web:Polygon-splitting}
 Sumit Khetarpal.
 \newblock {Dividing A Polygon In Any Given Number Of Equal Areas}.
 \newblock \url{http://www.khetarpal.org/polygon-splitting/}, 2014.
-\newblock [Online; accessed 24-December-2014].
+\newblock [Online].
 
-\bibitem{web:poly-split-js}
+\bibitem{web:Poly-split-js}
 Kladess.
 \newblock {poly-split-js}.
 \newblock \url{https://github.com/kladess/poly-split-js}, 2016.
-\newblock [Online; accessed 1-January-2018].
+\newblock [Online].
 
 \bibitem{web:NonFunc}
 Leif Lindbäck.
@@ -40,7 +46,7 @@ Victor Osetskyi.
 \newblock
   \url{https://medium.com/existek/sdlc-models-explained-agile-waterfall-v-shaped-iterative-spiral-e3f012f390c5/},
   2017.
-\newblock [Online; accessed 29-August-2017].
+\newblock [Online].
 
 \bibitem{web:RESTArchitecturalConstraints}
 RESTfulAPI.net.
@@ -48,7 +54,13 @@ RESTfulAPI.net.
 \newblock \url{https://restfulapi.net/rest-architectural-constraints/}, 2018.
 \newblock [Online].
 
-\bibitem{web:testing-sequence}
+\bibitem{web:Architecture-design}
+Svitla Team.
+\newblock {Web Application Architecture}.
+\newblock \url{https://svitla.com/blog/web-application-architecture}, 2018.
+\newblock [Online].
+
+\bibitem{web:Testing-sequence}
 Rebecca Vogels.
 \newblock {A 6-STEP GUIDE TO WEB APPLICATION TESTING}.
 \newblock \url{https://usersnap.com/blog/web-application-testing/}.
