@@ -1,18 +1,25 @@
 \section{Testing}
 \label{sec:Testing}
-% Section: Testing
-% Describe any testing performed on your code. (this will likely be a short chapter as you did not complete any formal testing I believe).
-Agile testing focuses on repairing faults immediately, rather than waiting for the end of the project. So in Agile development, testing is conducted during each iteration after its implementation phase. In each testing, we followed the sequences listed below to test:
+Agile testing focuses on repairing faults immediately, rather than waiting for the end of the project. So in Agile development, testing is conducted during each iteration after its implementation phase. In each testing, we followed the sequences \cite{web:testing-sequence} listed below to test:
 
 \subsection{Functional Testing}
 The first step of web application testing ensures that the functions of a system are tested. During functional testing, actual system usage is simulated. The idea is to come as close as possible to real system usage and create test conditions that are related to user requirements.
 
-Based on the black-box testing, we analyzed the boundaries of each system unit and created corresponding test cases. The specific implementation is to make legal or illegal input for each form and analyzed the expected output with the actual output.
+Based on the black-box testing, we analyzed the boundaries of each system unit and created corresponding test cases. The specific implementation is to make legal or illegal input for each form and analyzed the actual output with the expected output.
 
 \subsection{Usability Testing}
-Usability goes beyond functionality testing and combines testing for functionality as well as overall user experience. Because the developer knows how the code is written, he may not think to test a specific scenario. So we recruit test participants to use the application, based on their users' perspectives, we have received a lot of feedback from all aspects. For example, they don't know how to use the map editor correctly, etc.
+Usability goes beyond functionality testing and combines testing for functionality as well as overall user experience. Because the developer knows how the code is written, he may not think to test a specific scenario. So we recruit test participants to use the application, based on their users' perspectives, we have received a lot of feedback from all aspects. For example, they don't know how to use the map editor correctly at the very first time, etc.
 
 \subsection{Interface Testing}
-Interface testing ensures that all interactions between the client and web server interfaces are running smoothly. We tested each of the APIs, including checking the communication process and ensuring that error messages are correctly displayed and that client and server interrupt are handled correctly. There are also a lot of problems, such as executing database operations without further verification of the parameters obtained on the server side, etc.
+Interface testing ensures that all interactions between the client and web server interfaces are running smoothly. We tested each of the APIs, including checking the communication process and ensuring that error messages are correctly displayed and that client and server interrupt are handled correctly. There are also a lot of problems, such as executing database operations without further verification of the parameters in the server side, etc.
 
 \subsection{Compatibility Testing}
+Compatibility testing is broadly divided into browser compatibility, operating system compatibility, and mobile compatibility.
+
+Since the application is based on the Browser/Server architecture, we focus on the browser test. And the author's computer is macOS, we then tested it based on the browsers on macOS: Chrome, Firefox, Safari, and Opera. The main purpose of the browser compatibility testing is to detect if the application can run equally well on different browsers, which includes checking that JavaScript, AJAX, APIs, and authentication requests are working as designed.
+
+\subsection{Performance Testing}
+For a web application, performance testing is always inseparable from load test and stress testing. But since the application has not been deployed to the web, we transferred the performance testing to the map generator. The key of the testing is the rendering performance of the map, the value of fps (the frequency at which consecutive images called frames appear on a display) as an indicator.
+
+\subsection{Security Testing}
+The final step of web application testing makes sure that the application is protected against unauthorized access and harmful actions from all kinds of attacks. However, since our servers, including the client server, the backend server, and the database server are all running locally. And we are not going to deploy them online, this phase was simplified. We only tested if cookies and tokens are safely saved.

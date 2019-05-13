@@ -44,6 +44,11 @@
 \contentsline {subsubsection}{\numberline {4.3.10.}Buildings and Details}{30}{subsubsection.0.4.3.10}
 \contentsline {subsubsection}{\numberline {4.3.11.}Graph Data Structure}{31}{subsubsection.0.4.3.11}
 \contentsline {section}{\numberline {5.}Testing}{33}{section.0.5}
-\contentsline {section}{\numberline {6.}Conclusion}{34}{section.0.6}
-\contentsline {section}{\numberline {7.}References}{35}{section.0.7}
-\contentsline {section}{\numberline {8.}Appendices}{36}{section.0.8}
+\contentsline {subsection}{\numberline {5.1.}Functional Testing}{33}{subsection.0.5.1}
+\contentsline {subsection}{\numberline {5.2.}Usability Testing}{33}{subsection.0.5.2}
+\contentsline {subsection}{\numberline {5.3.}Interface Testing}{33}{subsection.0.5.3}
+\contentsline {subsection}{\numberline {5.4.}Compatibility Testing}{33}{subsection.0.5.4}
+\contentsline {subsection}{\numberline {5.5.}Security Testing}{34}{subsection.0.5.5}
+\contentsline {section}{\numberline {6.}Conclusion}{35}{section.0.6}
+\contentsline {section}{\numberline {7.}References}{36}{section.0.7}
+\contentsline {section}{\numberline {8.}Appendices}{37}{section.0.8}
