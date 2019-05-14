@@ -87,15 +87,13 @@ The backend consists of the server, database, and APIs. The server running on th
 
 To connect MongoDB to our Express application, we had to use an ORM to convert information from the database to a JavaScript application without SQL statements. ORM is short for Object Related Mapping, a technique that can be used to convert data among incompatible types. More specifically, ORMs mimic the actual database so we can operate within a programming language (e.g. JavaScript) without using a database query language (e.g. SQL) to interact with the database. For this application, we used Mongoose as the ORM, which is an object document modeling (ODM) layer that sits on top of the Node.js's MongoDB driver.
 
-Figure \ref{fig:Backend Folder Structure} shows the final structure of the backend application powered by Node.js.
+Figure \ref{fig:Backend Folder Structure} shows the final structure of the backend application powered by Node.js. Figure \ref{fig:Endpoints} shows a part of implemented endpoints, which are located in src/routes/index.js.
 
 \begin{figure}[htbp]
   \includegraphics[width=\textwidth]{section04/assets/Backend.png}
   \caption{Backend Folder Structure}
   \label{fig:Backend Folder Structure}
 \end{figure}
-
-Figure \ref{fig:Endpoints} shows a part of implemented endpoints, which are located in src/routes/index.js.
 
 \begin{figure}[htbp]
   \includegraphics[width=\textwidth]{section04/assets/Endpoints.png}
@@ -197,19 +195,19 @@ As we mentioned in the design phase, the city map was subdivided into 13 types, 
 \[ desirability = (elevation + affluence) / 2 \]
 
 \begin{enumerate}
-  \item rich: $0.8 \leq desirability \geq 1$
+  \item castle: $\mathbf{max}\,desirability$
+  \item empty: $desirability = 0 \, \wedge \, (waterline < desirability \leq 0.45)$
+  \item farm: $waterline < desirability \wedge elevation <= 0.45$
+  \item harbor: $\{poor, water\} \subset \{neighbours\}$
   \item medium: $0.6 < desirability > 0.8$
-  \item poor: $waterline < desirability \geq 0.6$
-  \item university: $\{rich, rich, rich, rich\} \subset \{neighbours\} \, \wedge \, \mathbf{count} \{university\} < 2.5 / 100 * \mathbf{count} \{polygons\}$
+  \item military: The military always surrounds the castle
   \item park: $\{poor, medium, rich\} \subset \{neighbours\}$
   \item plaza: $\{poor, medium, rich\} \subset \{neighbours\}$
-  \item water: $elevation \leq waterline$
-  \item harbor: $\{poor, water\} \subset \{neighbours\}$
-  \item farm: $waterline < desirability \wedge elevation <= 0.45$
-  \item empty: $desirability = 0 \, \wedge \, (waterline < desirability \leq 0.45)$
-  \item castle: $\mathbf{max}\,desirability$
-  \item military: The military always surrounds the castle
+  \item poor: $waterline < desirability \geq 0.6$
   \item religious: $Math.random() > 0.99 \, \wedge \, \mathbf{count} \{religious\} < 2.5 / 100 * \mathbf{count} \{polygons\}$
+  \item rich: $0.8 \leq desirability \geq 1$
+  \item university: $\{rich, rich, rich, rich\} \subset \{neighbours\} \, \wedge \, \mathbf{count} \{university\} < 2.5 / 100 * \mathbf{count} \{polygons\}$
+  \item water: $elevation \leq waterline$
 \end{enumerate}
 
 In our design, sites closest to the boundary can only be assigned as empty, farm, or water. Different types of districts are represented by different background colors.
@@ -217,7 +215,7 @@ In our design, sites closest to the boundary can only be assigned as empty, farm
 \subsubsection{Blocks}
 One of the most important parts is the generation of buildings, which is procedural. Before generating the buildings, we first introduced the concept of a block. A district may have many blocks, and a block may contain many buildings.
 
-The main idea of creating buildings is polygon splitting. Because the time to build the wheel was too long, we used a third-party library called poly-split-js.js written by Kladess \cite{web:Poly-split-js}. It implemented the polygon-splitting algorithm written by Sumit Khetarpal \cite{web:Polygon-splitting}. The algorithm splits polygons into any number of equal areas while ensuring the minimum length of line based cuts. It also works for both convex and concave polygons, as long as they do not have non-manifold vertices, and can be traversed with a single loop. In a nutshell, this algorithm is designed to divide a polygon into two by their area ratio. It receives two parameters: the vertex set of the polygon to be split and the area ratio of the polygons to be input. It returns the vertices sets Polygon1 and Polygon2 of the two split polygons, and a secant line called Cutline.
+The main idea of creating buildings is polygon splitting. We used a third-party library called poly-split-js.js written by Kladess \cite{web:Poly-split-js}, that implemented a polygon-splitting algorithm written by Sumit Khetarpal \cite{web:Polygon-splitting}. The algorithm splits polygons into any number of equal areas while ensuring the minimum length of line based cuts. It also works for both convex and concave polygons, as long as they do not have non-manifold vertices, and can be traversed with a single loop. In a nutshell, this algorithm is designed to divide a polygon into two by their area ratio. It receives two parameters: the vertex set of the polygon to be split and the area ratio of the polygons to be input. It returns the vertices sets Polygon1 and Polygon2 of the two split polygons, and a secant line called Cutline.
 
 We split all polygons (except water, park, and castle) into blocks, to obtain the preliminary version of the city map. Figure \ref{fig:blocks} is an example of this technique.
 
@@ -261,11 +259,12 @@ Since the map would be filled with polygons in an instant, we designed such a me
 \end{figure}
 
 \subsubsection{Graph Data Structure}
+Figure \ref{fig:Code graph} is the core code that generates the graph and shows the graph data structure. ``this.sites'' creates random sites (points) within the scope of the Voronoi diagram (Canvas). In case of sites being too close to the boundaries, we set a padding value for boundaries. ``this.voronoi'' creates a new Voronoi layout with default x and y accessors and a null extent. ``this.diagram'' returned by Voronoi diagram object has the following properties: edges, links, cells and triangles, which respectively represent the set of edges of polygons, the set of links based on sites, the set of vertices of polygons, and Delaunay triangulation of the specified data array as an array of triangles.
 
-Figure \ref{fig:Code graph} is the core code that generates the graph and shows the graph data structure.
+The ``relaxAndReassignSites()'' method relaxes sites using Lloyd's algorithm and assigns the attributes we need to each site. The ``makeEdge()'' method accepts one parameter: the diagram object, and then simply converts the properties of the Edge object to the format we need. The ``makePolygons()'' accepts two parameters: the sites object and the diagram object, it converts the cells object from the diagram object into the format we need, assigns the properties we need to each cell, and returns new polygon objects.
 
 \begin{figure}[htbp]
-  \includegraphics[width=\textwidth]{section04/assets/Graph.png}
+  \includegraphics[width=\textwidth]{section04/assets/Graphics.png}
   \caption{Core code that generates the graph and shows the graph data structure}
   \label{fig:Code graph}
 \end{figure}

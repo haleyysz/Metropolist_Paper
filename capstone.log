@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.16)  13 MAY 2019 14:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.16)  13 MAY 2019 23:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -673,20 +673,20 @@ File: section02/assets/use_case.png Graphic file (type png)
 Package pdftex.def Info: section02/assets/use_case.png  used on input line 49.
 (pdftex.def)             Requested size: 397.485pt x 475.87798pt.
  [6 <./section02/assets/use_case.png>]
-Overfull \hbox (6.34784pt too wide) in paragraph at lines 93--93
+Overfull \hbox (6.34784pt too wide) in paragraph at lines 91--91
 []\OT1/cmr/bx/n/14.4 Selection of Soft-ware De-vel-op-ment Life Cy-cle Model 
  []
 
 [7]
-<section02/assets/Agile.png, id=472, 1606.0pt x 903.375pt>
+<section02/assets/Agile.png, id=470, 1606.0pt x 903.375pt>
 File: section02/assets/Agile.png Graphic file (type png)
 <use section02/assets/Agile.png>
-Package pdftex.def Info: section02/assets/Agile.png  used on input line 106.
+Package pdftex.def Info: section02/assets/Agile.png  used on input line 104.
 (pdftex.def)             Requested size: 397.485pt x 223.58255pt.
  [8 <./section02/assets/Agile.png (PNG copy)>]) [9] (./section03/section.tex [10
 
 ]
-<section03/assets/ER_Diagram.png, id=502, 286.36987pt x 158.54231pt>
+<section03/assets/ER_Diagram.png, id=500, 286.36987pt x 158.54231pt>
 File: section03/assets/ER_Diagram.png Graphic file (type png)
 <use section03/assets/ER_Diagram.png>
 Package pdftex.def Info: section03/assets/ER_Diagram.png  used on input line 40.
@@ -736,115 +736,121 @@ Underfull \hbox (badness 2478) in paragraph at lines 98--98
 []|\OT1/cmr/m/n/12 Add a new map to the
  []
 
-[13] [14] [15] [16]) [17] (./section04/section.tex
-<section04/assets/Frontend.png, id=587, 847.165pt x 1310.8975pt>
+[13] [14]
+Overfull \hbox (0.453pt too wide) in paragraph at lines 131--132
+[]\OT1/cmr/m/n/12 Building. The build-ing layer dis-plays build-ings of var-i-ous dis-tricts. These
+ []
+
+[15] [16]) [17] (./section04/section.tex
+<section04/assets/Frontend.png, id=582, 1365.1pt x 1017.8025pt>
 File: section04/assets/Frontend.png Graphic file (type png)
 <use section04/assets/Frontend.png>
 Package pdftex.def Info: section04/assets/Frontend.png  used on input line 12.
-(pdftex.def)             Requested size: 397.485pt x 615.06178pt.
-<section04/assets/GUI-login-small.png, id=591, 498.86375pt x 500.87125pt>
+(pdftex.def)             Requested size: 397.485pt x 296.35101pt.
+<section04/assets/GUI-login-small.png, id=586, 498.86375pt x 500.87125pt>
 File: section04/assets/GUI-login-small.png Graphic file (type png)
 <use section04/assets/GUI-login-small.png>
 Package pdftex.def Info: section04/assets/GUI-login-small.png  used on input line 29.
 (pdftex.def)             Requested size: 196.75615pt x 197.54773pt.
-<section04/assets/GUI-signup-small.png, id=592, 561.09625pt x 663.47874pt>
+<section04/assets/GUI-signup-small.png, id=587, 561.09625pt x 663.47874pt>
 File: section04/assets/GUI-signup-small.png Graphic file (type png)
 <use section04/assets/GUI-signup-small.png>
 Package pdftex.def Info: section04/assets/GUI-signup-small.png  used on input line 35.
 (pdftex.def)             Requested size: 196.75615pt x 232.65636pt.
  [18
 
-] [19 <./section04/assets/Frontend.png>]
-<section04/assets/GUI-community.png, id=604, 2406.9925pt x 1941.2525pt>
+]
+<section04/assets/GUI-community.png, id=594, 2406.9925pt x 1941.2525pt>
 File: section04/assets/GUI-community.png Graphic file (type png)
 <use section04/assets/GUI-community.png>
 Package pdftex.def Info: section04/assets/GUI-community.png  used on input line 62.
 (pdftex.def)             Requested size: 397.485pt x 320.55943pt.
-<section04/assets/GUI-user.png, id=606, 2890.8pt x 1583.9175pt>
+<section04/assets/GUI-user.png, id=596, 2890.8pt x 1583.9175pt>
 File: section04/assets/GUI-user.png Graphic file (type png)
 <use section04/assets/GUI-user.png>
 Package pdftex.def Info: section04/assets/GUI-user.png  used on input line 70.
 (pdftex.def)             Requested size: 397.485pt x 217.78328pt.
-<section04/assets/GUI-profile.png, id=608, 2890.8pt x 2029.5825pt>
+ [19 <./section04/assets/Frontend.png>] [20 <./section04/assets/GUI-login-small.png> <./section04/assets/GUI-signup-small.png> <./section04/assets/GUI-community.png>]
+<section04/assets/GUI-profile.png, id=614, 2890.8pt x 2029.5825pt>
 File: section04/assets/GUI-profile.png Graphic file (type png)
 <use section04/assets/GUI-profile.png>
 Package pdftex.def Info: section04/assets/GUI-profile.png  used on input line 78.
 (pdftex.def)             Requested size: 397.485pt x 279.06071pt.
- [20 <./section04/assets/GUI-login-small.png> <./section04/assets/GUI-signup-small.png>] [21 <./section04/assets/GUI-community.png> <./section04/assets/GUI-user.png>]
-<section04/assets/Backend.png, id=626, 1365.1pt x 672.5125pt>
+<section04/assets/Backend.png, id=617, 1365.1pt x 672.5125pt>
 File: section04/assets/Backend.png Graphic file (type png)
 <use section04/assets/Backend.png>
 Package pdftex.def Info: section04/assets/Backend.png  used on input line 93.
 (pdftex.def)             Requested size: 397.485pt x 195.81378pt.
- [22 <./section04/assets/GUI-profile.png>]
-<section04/assets/Endpoints.png, id=634, 1760.5775pt x 953.5625pt>
+<section04/assets/Endpoints.png, id=618, 1760.5775pt x 953.5625pt>
 File: section04/assets/Endpoints.png Graphic file (type png)
 <use section04/assets/Endpoints.png>
-Package pdftex.def Info: section04/assets/Endpoints.png  used on input line 101.
+Package pdftex.def Info: section04/assets/Endpoints.png  used on input line 99.
 (pdftex.def)             Requested size: 397.485pt x 215.28436pt.
- [23 <./section04/assets/Backend.png> <./section04/assets/Endpoints.png>]
-<section04/assets/Map-voronoi.png, id=643, 1165.35374pt x 675.52374pt>
+ [21 <./section04/assets/GUI-user.png>] [22 <./section04/assets/GUI-profile.png> <./section04/assets/Backend.png>]
+<section04/assets/Map-voronoi.png, id=633, 1165.35374pt x 675.52374pt>
 File: section04/assets/Map-voronoi.png Graphic file (type png)
 <use section04/assets/Map-voronoi.png>
-Package pdftex.def Info: section04/assets/Map-voronoi.png  used on input line 116.
+Package pdftex.def Info: section04/assets/Map-voronoi.png  used on input line 114.
 (pdftex.def)             Requested size: 196.75615pt x 114.05412pt.
-<section04/assets/Map-voronoi-relaxation.png, id=644, 1166.3575pt x 675.52374pt>
+<section04/assets/Map-voronoi-relaxation.png, id=634, 1166.3575pt x 675.52374pt>
 File: section04/assets/Map-voronoi-relaxation.png Graphic file (type png)
 <use section04/assets/Map-voronoi-relaxation.png>
-Package pdftex.def Info: section04/assets/Map-voronoi-relaxation.png  used on input line 122.
+Package pdftex.def Info: section04/assets/Map-voronoi-relaxation.png  used on input line 120.
 (pdftex.def)             Requested size: 196.75615pt x 113.95105pt.
-<section04/assets/Map-heightmap.png, id=646, 1164.35pt x 675.52374pt>
+ [23 <./section04/assets/Endpoints.png>]
+<section04/assets/Map-heightmap.png, id=641, 1164.35pt x 675.52374pt>
 File: section04/assets/Map-heightmap.png Graphic file (type png)
 <use section04/assets/Map-heightmap.png>
-Package pdftex.def Info: section04/assets/Map-heightmap.png  used on input line 134.
+Package pdftex.def Info: section04/assets/Map-heightmap.png  used on input line 132.
 (pdftex.def)             Requested size: 397.485pt x 230.60272pt.
- [24 <./section04/assets/Map-voronoi.png> <./section04/assets/Map-voronoi-relaxation.png>]
-<section04/assets/Map-delaunay-triangulation.png, id=654, 1166.3575pt x 677.53125pt>
+ [24 <./section04/assets/Map-voronoi.png> <./section04/assets/Map-voronoi-relaxation.png> <./section04/assets/Map-heightmap.png>]
+<section04/assets/Map-delaunay-triangulation.png, id=650, 1166.3575pt x 677.53125pt>
 File: section04/assets/Map-delaunay-triangulation.png Graphic file (type png)
 <use section04/assets/Map-delaunay-triangulation.png>
-Package pdftex.def Info: section04/assets/Map-delaunay-triangulation.png  used on input line 143.
+Package pdftex.def Info: section04/assets/Map-delaunay-triangulation.png  used on input line 141.
 (pdftex.def)             Requested size: 397.485pt x 230.89516pt.
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 151.
-<section04/assets/Map-contourline.png, id=657, 1165.35374pt x 675.52374pt>
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 149.
+<section04/assets/Map-contourline.png, id=653, 1165.35374pt x 675.52374pt>
 File: section04/assets/Map-contourline.png Graphic file (type png)
 <use section04/assets/Map-contourline.png>
-Package pdftex.def Info: section04/assets/Map-contourline.png  used on input line 168.
+Package pdftex.def Info: section04/assets/Map-contourline.png  used on input line 166.
 (pdftex.def)             Requested size: 397.485pt x 230.40688pt.
- [25 <./section04/assets/Map-heightmap.png>] [26 <./section04/assets/Map-delaunay-triangulation.png>]
-<section04/assets/Map-wall.png, id=680, 1182.4175pt x 745.78625pt>
+ [25 <./section04/assets/Map-delaunay-triangulation.png>] [26 <./section04/assets/Map-contourline.png>]
+<section04/assets/Map-wall.png, id=675, 1182.4175pt x 745.78625pt>
 File: section04/assets/Map-wall.png Graphic file (type png)
 <use section04/assets/Map-wall.png>
-Package pdftex.def Info: section04/assets/Map-wall.png  used on input line 189.
+Package pdftex.def Info: section04/assets/Map-wall.png  used on input line 187.
 (pdftex.def)             Requested size: 397.485pt x 250.69627pt.
- [27 <./section04/assets/Map-contourline.png>]
-Overfull \hbox (13.35269pt too wide) in paragraph at lines 203--204
+ [27 <./section04/assets/Map-wall.png>]
+Overfull \hbox (13.35269pt too wide) in paragraph at lines 209--210
 []\OT1/cmr/m/n/12 university: $\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 rich; rich; rich; rich\OMS/cmsy/m/n/12 g ^^Z f\OML/cmm/m/it/12 neighbours\OMS/cmsy/m/n/12 g  ^  []f\OML/cmm/m/it/12 university\OMS/cmsy/m/n/12 g \OML/cmm/m/it/12 <
  []
 
-[28 <./section04/assets/Map-wall.png>]
-<section04/assets/Map-blocks-no-buildings.png, id=707, 1204.5pt x 757.83125pt>
+[28]
+<section04/assets/Map-blocks-no-buildings.png, id=705, 1204.5pt x 757.83125pt>
 File: section04/assets/Map-blocks-no-buildings.png Graphic file (type png)
 <use section04/assets/Map-blocks-no-buildings.png>
-Package pdftex.def Info: section04/assets/Map-blocks-no-buildings.png  used on input line 225.
+Package pdftex.def Info: section04/assets/Map-blocks-no-buildings.png  used on input line 223.
 (pdftex.def)             Requested size: 397.485pt x 250.08508pt.
- [29]
-<section04/assets/Map-blocks-streets.png, id=716, 1203.49625pt x 756.8275pt>
+ [29 <./section04/assets/Map-blocks-no-buildings.png>]
+<section04/assets/Map-blocks-streets.png, id=712, 1203.49625pt x 756.8275pt>
 File: section04/assets/Map-blocks-streets.png Graphic file (type png)
 <use section04/assets/Map-blocks-streets.png>
-Package pdftex.def Info: section04/assets/Map-blocks-streets.png  used on input line 242.
+Package pdftex.def Info: section04/assets/Map-blocks-streets.png  used on input line 240.
 (pdftex.def)             Requested size: 397.485pt x 249.96172pt.
- [30 <./section04/assets/Map-blocks-no-buildings.png>]
-<section04/assets/Map-details.png, id=723, 1203.49625pt x 754.82pt>
+ [30 <./section04/assets/Map-blocks-streets.png>]
+<section04/assets/Map-details.png, id=719, 1203.49625pt x 754.82pt>
 File: section04/assets/Map-details.png Graphic file (type png)
 <use section04/assets/Map-details.png>
-Package pdftex.def Info: section04/assets/Map-details.png  used on input line 258.
+Package pdftex.def Info: section04/assets/Map-details.png  used on input line 256.
 (pdftex.def)             Requested size: 397.485pt x 249.29869pt.
-<section04/assets/Graph.png, id=725, 1499.6025pt x 985.6825pt>
-File: section04/assets/Graph.png Graphic file (type png)
-<use section04/assets/Graph.png>
-Package pdftex.def Info: section04/assets/Graph.png  used on input line 268.
-(pdftex.def)             Requested size: 397.485pt x 261.26477pt.
-) [31 <./section04/assets/Map-blocks-streets.png>] [32 <./section04/assets/Map-details.png> <./section04/assets/Graph.png>] (./section05/section.tex [33
+ [31 <./section04/assets/Map-details.png>]
+<section04/assets/Graphics.png, id=726, 1282.7925pt x 921.4425pt>
+File: section04/assets/Graphics.png Graphic file (type png)
+<use section04/assets/Graphics.png>
+Package pdftex.def Info: section04/assets/Graphics.png  used on input line 267.
+(pdftex.def)             Requested size: 397.485pt x 285.51768pt.
+) [32 <./section04/assets/Graphics.png>] (./section05/section.tex [33
 
 ]) [34] (./section06/section.tex) [35
 
@@ -883,18 +889,18 @@ Package rerunfilecheck Info: File `capstone.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 117.
  ) 
 Here is how much of TeX's memory you used:
- 10218 strings out of 492649
- 155428 string characters out of 6129622
- 265587 words of memory out of 5000000
+ 10213 strings out of 492649
+ 155403 string characters out of 6129622
+ 264587 words of memory out of 5000000
  13649 multiletter control sequences out of 15000+600000
  10504 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,10n,45p,1289b,704s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on capstone.pdf (46 pages, 16250700 bytes).
+Output written on capstone.pdf (46 pages, 16215822 bytes).
 PDF statistics:
- 866 PDF objects out of 1000 (max. 8388607)
- 752 compressed objects within 8 object streams
- 265 named destinations out of 1000 (max. 500000)
+ 860 PDF objects out of 1000 (max. 8388607)
+ 746 compressed objects within 8 object streams
+ 260 named destinations out of 1000 (max. 500000)
  571 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -56,15 +56,14 @@ There are numerous non-functional requirements for this system: response time, a
 \begin{enumerate}
   \item Security:
   \begin{enumerate}
-    \item Input Validation:
-    \begin{enumerate}
-      \item All user supplied data is validated at both client and server
-    \end{enumerate}
+    \item Input Validation: All user supplied data is validated at both client and server
+
     \item Password Encryption:
     \begin{enumerate}
       \item Password must be encrypted
       \item Not even the system administrators shall see clear text passwords
     \end{enumerate}
+
     \item Prohibiting Cross Site Scripting (XSS):
     \begin{enumerate}
       \item Never insert data anywhere in a ``script'' element
@@ -74,6 +73,7 @@ There are numerous non-functional requirements for this system: response time, a
       \item Never insert data in an attribute value
       \item Never insert data in a tag name
     \end{enumerate}
+
     \item Secure Session Cookie:
     \begin{enumerate}
       \item Only use secure cookies
@@ -81,12 +81,10 @@ There are numerous non-functional requirements for this system: response time, a
       \item Always change the session id after login
     \end{enumerate}
   \end{enumerate}
+
   \item Performance:
   \begin{enumerate}
-    \item High performance of rendering map:
-    \begin{enumerate}
-      \item The map rendering engine must be fast enough to support a viable user experience
-    \end{enumerate}
+    \item High performance of rendering map: The map rendering engine must be fast enough to support a viable user experience
   \end{enumerate}
 \end{enumerate}
 
