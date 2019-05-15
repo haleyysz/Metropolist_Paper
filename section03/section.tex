@@ -3,7 +3,7 @@
 
 \subsection{Architecture Design}
 \label{sec:Design>Architecture Design}
-Because we selected the web application model from the beginning, the classic client-server web architecture was quickly adopted. The architecture is a distributed application structure that partitions tasks or workloads between the providers of a resource or service, called servers, and service requests called clients. In theory, any device connected to the Internet can try to access and obtain the resources or services of the server while the server is running normally. Based on the client-server structure, we have detailed its component structures below \cite{web:Architecture-design}:
+Metropolist is a web application that naturally decomposes into a client-server architecture. The architecture is a distributed application structure that partitions tasks or workloads between the providers of a resource or service, called servers, and service requests called clients. In theory, any device connected to the Internet can try to access and obtain the resources or services of the server while the server is running normally. Based on the client-server structure, we have detailed its component structures below \cite{web:Architecture-design}:
 
 \subsubsection{Web Browser or Client}
 \label{sec:Design>Architecture Design>Web Browser or Client}
@@ -108,35 +108,39 @@ Since the project is a web application, the map generator must be able to run in
 
 SVG is a language for describing 2D graphics in XML, which means every element is available within the SVG DOM, you can attach JavaScript event handlers for an element. In SVG, each drawn shape is remembered as an object. If attributes of an SVG object are changed, the browser can automatically redraw the shape. Canvas draws 2D graphics, on the fly (with JavaScript) by rendering pixel by pixel. In Canvas, once the graphics are drawn, it is forgotten by the browser. If its position should be changed, the entire scene needs to be redrawn, including any objects that might have been covered by the graphics.
 
-Because the map generator allows the user to annotate and edit the map, every time the user edits the map, the map will be redrawn, which contains thousands of objects, so we chose Canvas. By the way, SVG renders slowly if there are plenty of complex objects (anything that uses the DOM a lot will be slow).
+Because the map generator allows the user to dynamically annotate and edit the map, every time the user edits the map, the map will be redrawn, which contains thousands of objects, so we chose Canvas. Because SVG renders more slowly than Canvas of complex objects.
 
 \subsubsection{Graphics Libraries}
 \label{sec:Design>Map Generator Design>Graphics Libraries}
-There are many open source third-party graphics libraries on the web, such as D3.js, Paper.js, Fabric.js, Three.js, and so on, which provide many ready-made and mature geometric construction methods. D3.js was chosen because of the following reasons:
+There are many open source third-party graphics libraries on the web, such as D3.js, Paper.js, Fabric.js, Three.js, and so on, which provide convenient access to the local-level graphics primitives. D3.js was chosen as a rendering engine because of the following reasons:
 \begin{enumerate}
-  \item It is open source: so we can freely use the library, code and build our own maps.
-  \item It has good and neat documentation of all the available functions and methods.
+  \item It is open source, so we can freely use the library and code to build our own maps.
+  \item It has accurate documentation of available functions and methods.
   \item There is a gallery with unique charts that can be referred to while developing our project.
 \end{enumerate}
 
 \subsubsection{Map}
 \label{sec:Design>Map Generator Design>Map}
-Before we started to develop the map generator, we needed to understand what is a map and then decide what data structures and methods we are going to use to write. A map is a two-dimensional, abstract representation of the surface of the world. There are three main ways to generate a map: noise functions, random partitioning, or a hybrid of the two. Most procedural map generators use noise functions (midpoint displacement, fractal, diamond-square, Perlin noise, etc.) to generate a randomized map, but the results often look artificial. So we decided to use random partitioning to model the mapping constraints. And we defined the following layers of the map:
+Before we started to develop the map generator, we needed to define the nature of a map and then decide what data structures and methods that would adequately represent the map.
+
+A map is a two-dimensional, abstract representation of the surface of the world. There are three main ways to generate a map: noise functions, random partitioning, or a hybrid of the two. Most procedural map generators use noise functions (midpoint displacement, fractal, diamond-square, Perlin noise, etc.) to generate a randomized map, but the results often look artificial.
+
+So we decided to use random partitioning to model the mapping constraints. And we defined the following layers of the map:
 
 \begin{enumerate}
   \item Elevation. The elevation layer represents the altitude of the area. The elevation of all locations in a polygon is considered the same.
   \item Affluence. The affluence layer represents the wealth of the district (polygon). The lower the value, the poorer the area, vice versa. It is usually used to classify residential areas.
   \item Desirability. The desirability layer represents the attraction of the region to people, from 0 to infinity, which determined by elevation and affluence. People generally prefer to live in places with higher desirability.
-  \item District. The district layer allows the user to assign types to districts. Correspondingly, different types of districts have different background colors. As a fantasy map of a medieval city, the city wall is often an essential element. Our map generator allows the user to create walls manually, so the user can use the warp tool to render the city wall under this layer.
+  \item District. The district layer allows the user to assign types to districts. Correspondingly, different types of districts have different background colors. As a fantasy map of a medieval city, the city wall is often an essential element. Our map generator allows the user to create walls manually so the user can use the warp tool to render the city wall under this layer.
   \item Building. The building layer displays buildings of various districts. These buildings are procedurally generated, and the user can change them by changing the type of the district.
 \end{enumerate}
 
-Based on these layers, we have expanded upon the district layer. A city is composed of different districts, so we introduced the concept of district:
+A city is composed of different districts, so we introduced the following district types:
 
 \begin{enumerate}
   \item Castle. Represents a castle. A city map has only one castle, and the castle is always surrounded by large militaries.
   \item Empty. Represents empty areas.
-  \item Farm. Represents farms and usually there is a farmer’s house on a large farm.
+  \item Farm. Represents farms and usually, there is a farmer’s house on a large farm.
   \item Harbor. Represents harbors, and there is usually a deck near the sea.
   \item Medium. Represents the middle-class area, the value of desirability is generally medium
   \item Military. Represents the military. The military always surrounds the castle
@@ -149,7 +153,7 @@ Based on these layers, we have expanded upon the district layer. A city is compo
   \item Water. Represents rivers, lakes, sea, or ocean.
 \end{enumerate}
 
-After introducing these district types, we want the project to have the following features, which were added to the initial requirements:
+After introducing these district types, we realized the project should have the following features, which were added in addition to the initial requirements:
 
 \begin{enumerate}
   \item Once opening the map editor page, it will show an empty map with random district placements and shapes, then the user can start editing the map.

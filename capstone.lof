@@ -1,24 +1,24 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces A screenshot of a planetary terrain region of ``No Man's Sky''}}{1}{figure.caption.8}
-\contentsline {figure}{\numberline {2}{\ignorespaces A screenshot of ``Minecraft''}}{2}{figure.caption.9}
-\contentsline {figure}{\numberline {3}{\ignorespaces A screenshot of the Medieval Fantasy City Generator}}{3}{figure.caption.10}
-\contentsline {figure}{\numberline {4}{\ignorespaces A screenshot of the Azgaar's Fantasy Map Generator}}{3}{figure.caption.11}
-\contentsline {figure}{\numberline {5}{\ignorespaces A screenshot of the current project}}{4}{figure.caption.12}
-\contentsline {figure}{\numberline {6}{\ignorespaces Use Case Diagram}}{6}{figure.caption.13}
-\contentsline {figure}{\numberline {7}{\ignorespaces Agile Development Life Cycle Model}}{8}{figure.caption.14}
-\contentsline {figure}{\numberline {8}{\ignorespaces Entity Relationship Diagram}}{12}{figure.caption.15}
-\contentsline {figure}{\numberline {9}{\ignorespaces Frontend Folder Structure\relax }}{19}{figure.caption.17}
-\contentsline {figure}{\numberline {10}{\ignorespaces Login and Signup pages\relax }}{20}{figure.caption.18}
-\contentsline {figure}{\numberline {11}{\ignorespaces Community page\relax }}{20}{figure.caption.19}
-\contentsline {figure}{\numberline {12}{\ignorespaces User dashboard page\relax }}{21}{figure.caption.20}
-\contentsline {figure}{\numberline {13}{\ignorespaces Profile page\relax }}{22}{figure.caption.21}
-\contentsline {figure}{\numberline {14}{\ignorespaces Backend Folder Structure\relax }}{22}{figure.caption.22}
-\contentsline {figure}{\numberline {15}{\ignorespaces Endpoints\relax }}{23}{figure.caption.23}
-\contentsline {figure}{\numberline {16}{\ignorespaces Voronoi polygons before relaxation and after relaxation\relax }}{24}{figure.caption.24}
-\contentsline {figure}{\numberline {17}{\ignorespaces The land surrounded by water\relax }}{24}{figure.caption.25}
-\contentsline {figure}{\numberline {18}{\ignorespaces Delaunay triangulation\relax }}{25}{figure.caption.26}
-\contentsline {figure}{\numberline {19}{\ignorespaces A map with contour lines\relax }}{26}{figure.caption.27}
-\contentsline {figure}{\numberline {20}{\ignorespaces A map with walls and classification\relax }}{27}{figure.caption.28}
-\contentsline {figure}{\numberline {21}{\ignorespaces A city map with each district divided into sub-blocks\relax }}{29}{figure.caption.29}
-\contentsline {figure}{\numberline {22}{\ignorespaces A city map with streets\relax }}{30}{figure.caption.30}
-\contentsline {figure}{\numberline {23}{\ignorespaces A city map with buildings and details\relax }}{31}{figure.caption.31}
-\contentsline {figure}{\numberline {24}{\ignorespaces Core code that generates the graph and shows the graph data structure\relax }}{32}{figure.caption.32}
+\contentsline {figure}{\numberline {1}{\ignorespaces A screenshot of a planetary terrain region of ``No Man's Sky''}}{1}{figure.caption.26}
+\contentsline {figure}{\numberline {2}{\ignorespaces A screenshot of ``Minecraft''}}{2}{figure.caption.27}
+\contentsline {figure}{\numberline {3}{\ignorespaces A screenshot of the Medieval Fantasy City Generator}}{3}{figure.caption.28}
+\contentsline {figure}{\numberline {4}{\ignorespaces A screenshot of the Azgaar's Fantasy Map Generator}}{3}{figure.caption.29}
+\contentsline {figure}{\numberline {5}{\ignorespaces A screenshot of the current project}}{4}{figure.caption.30}
+\contentsline {figure}{\numberline {6}{\ignorespaces Use Case Diagram}}{6}{figure.caption.31}
+\contentsline {figure}{\numberline {7}{\ignorespaces Agile Development Life Cycle Model}}{8}{figure.caption.32}
+\contentsline {figure}{\numberline {8}{\ignorespaces Entity Relationship Diagram}}{12}{figure.caption.33}
+\contentsline {figure}{\numberline {9}{\ignorespaces Frontend Folder Structure\relax }}{19}{figure.caption.35}
+\contentsline {figure}{\numberline {10}{\ignorespaces Login and Signup pages\relax }}{20}{figure.caption.36}
+\contentsline {figure}{\numberline {11}{\ignorespaces Community page\relax }}{20}{figure.caption.37}
+\contentsline {figure}{\numberline {12}{\ignorespaces User dashboard page\relax }}{21}{figure.caption.38}
+\contentsline {figure}{\numberline {13}{\ignorespaces Profile page\relax }}{22}{figure.caption.39}
+\contentsline {figure}{\numberline {14}{\ignorespaces Backend Folder Structure\relax }}{22}{figure.caption.40}
+\contentsline {figure}{\numberline {15}{\ignorespaces Endpoints\relax }}{23}{figure.caption.41}
+\contentsline {figure}{\numberline {16}{\ignorespaces Voronoi polygons before relaxation and after relaxation\relax }}{23}{figure.caption.42}
+\contentsline {figure}{\numberline {17}{\ignorespaces The land surrounded by water\relax }}{24}{figure.caption.43}
+\contentsline {figure}{\numberline {18}{\ignorespaces Delaunay triangulation\relax }}{25}{figure.caption.44}
+\contentsline {figure}{\numberline {19}{\ignorespaces A map with contour lines\relax }}{26}{figure.caption.45}
+\contentsline {figure}{\numberline {20}{\ignorespaces A map with walls and classification\relax }}{27}{figure.caption.46}
+\contentsline {figure}{\numberline {21}{\ignorespaces A city map with each district divided into sub-blocks\relax }}{29}{figure.caption.47}
+\contentsline {figure}{\numberline {22}{\ignorespaces A city map with streets\relax }}{30}{figure.caption.48}
+\contentsline {figure}{\numberline {23}{\ignorespaces A city map with buildings and details\relax }}{31}{figure.caption.49}
+\contentsline {figure}{\numberline {24}{\ignorespaces Core code that generates the graph and shows the graph data structure\relax }}{32}{figure.caption.50}
